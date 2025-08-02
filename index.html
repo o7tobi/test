@@ -39,17 +39,28 @@
       border-radius: 1rem;
     }
 
-    /* Hovereffekt für Icon + Text */
-    .hover-move-group {
+    /* Hover Animation */
+    .nav-item {
+      transition: transform 0.4s ease, text-shadow 0.4s ease;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      width: 100%;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), text-shadow 0.4s ease;
+      gap: 0.75rem;
     }
 
-    .hover-move-group:hover {
-      transform: translateX(12px);
-      text-shadow: 0 0 10px rgba(155, 93, 229, 0.7);
+    .nav-wrapper:hover .nav-item {
+      transform: translateX(14px);
+      text-shadow: 0 0 8px rgba(155, 93, 229, 0.6);
+    }
+
+    .nav-wrapper {
+      display: block;
+      width: 100%;
+      padding: 4px;
+      border-radius: 0.75rem;
+      transition: background 0.3s ease;
     }
   </style>
 </head>
@@ -62,53 +73,45 @@
       <div class="flex items-center justify-center mb-6">
         <img src="profile.png" width="50" height="50" class="rounded-full" alt="Logo" />
       </div>
-      <nav class="flex flex-col space-y-4">
-        <a href="#" class="flex items-center px-4 py-2 rounded-lg">
-          <div class="hover-move-group opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span>🏠</span>
-            <span class="text-sm font-medium">Home</span>
+      <nav class="flex flex-col space-y-1 px-2">
+        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+          <div class="nav-item">
+            <span>🏠</span><span class="text-sm font-medium">Home</span>
           </div>
         </a>
-        <a href="#" class="flex items-center px-4 py-2 rounded-lg">
-          <div class="hover-move-group opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span>📄</span>
-            <span class="text-sm font-medium">Status</span>
+        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+          <div class="nav-item">
+            <span>📄</span><span class="text-sm font-medium">Status</span>
           </div>
         </a>
-        <a href="#" class="flex items-center px-4 py-2 rounded-lg">
-          <div class="hover-move-group opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span>🛠</span>
-            <span class="text-sm font-medium">Support</span>
+        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+          <div class="nav-item">
+            <span>🛠</span><span class="text-sm font-medium">Support</span>
           </div>
         </a>
-        <a href="#" class="flex items-center px-4 py-2 rounded-lg">
-          <div class="hover-move-group opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span>⚙️</span>
-            <span class="text-sm font-medium">Dashboard</span>
+        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+          <div class="nav-item">
+            <span>⚙️</span><span class="text-sm font-medium">Dashboard</span>
           </div>
         </a>
-        <a href="#" class="flex items-center px-4 py-2 rounded-lg">
-          <div class="hover-move-group opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span>📋</span>
-            <span class="text-sm font-medium">Commands</span>
+        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+          <div class="nav-item">
+            <span>📋</span><span class="text-sm font-medium">Commands</span>
           </div>
         </a>
-        <a href="#" class="flex items-center px-4 py-2 rounded-lg">
-          <div class="hover-move-group opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span>👤</span>
-            <span class="text-sm font-medium">Profil</span>
+        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+          <div class="nav-item">
+            <span>👤</span><span class="text-sm font-medium">Profil</span>
           </div>
         </a>
-        <a href="#" class="flex items-center px-4 py-2 rounded-lg">
-          <div class="hover-move-group opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span>⭐</span>
-            <span class="text-sm font-medium">Premium</span>
+        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+          <div class="nav-item">
+            <span>⭐</span><span class="text-sm font-medium">Premium</span>
           </div>
         </a>
-        <a href="#" class="flex items-center px-4 py-2 rounded-lg">
-          <div class="hover-move-group opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span>❓</span>
-            <span class="text-sm font-medium">Hilfe</span>
+        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+          <div class="nav-item">
+            <span>❓</span><span class="text-sm font-medium">Hilfe</span>
           </div>
         </a>
       </nav>
@@ -116,7 +119,6 @@
 
     <!-- Main Content -->
     <main class="flex-1 p-10 relative z-10">
-      <!-- Header -->
       <div class="flex justify-between items-center mb-10">
         <h1 class="text-3xl font-bold text-white">👋 Willkommen, o7_tobi</h1>
         <div class="flex items-center gap-3">
@@ -125,7 +127,6 @@
         </div>
       </div>
 
-      <!-- Hero Section -->
       <section class="text-center bg-gray-800 p-10 rounded-box shadow-lg">
         <h2 class="text-4xl font-bold mb-3">The only Discord bot you’ll ever need!</h2>
         <p class="text-gray-400 mb-6">New discord bot.</p>
@@ -138,7 +139,6 @@
         </div>
       </section>
 
-      <!-- Info Section -->
       <section class="mt-20 flex flex-col md:flex-row items-center justify-between gap-8 bg-gray-800 p-6 rounded-box shadow-md">
         <div class="max-w-md">
           <h3 class="text-xl font-semibold text-[var(--primary)] mb-2">👋 Willkommen neue Mitglieder</h3>
@@ -153,3 +153,4 @@
 
 </body>
 </html>
+
