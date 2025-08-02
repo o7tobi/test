@@ -18,28 +18,10 @@
       border-bottom-right-radius: 1rem;
     }
 
-    main::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      transition: width 0.3s ease-in-out;
-      pointer-events: none;
-    }
-
-    .group:hover + main::before,
-    aside:hover + main::before {
-      width: 100%;
-    }
-
     .rounded-box {
       border-radius: 1rem;
     }
 
-    /* Hover Animation */
     .nav-item {
       transition: transform 0.4s ease, text-shadow 0.4s ease;
       padding: 0.75rem 1rem;
@@ -66,50 +48,50 @@
 </head>
 <body class="bg-gray-900 text-white font-sans relative overflow-hidden">
 
-  <div class="flex min-h-screen relative">
+  <div class="flex min-h-screen">
 
     <!-- Sidebar -->
-    <aside class="group relative bg-gray-800 transition-all duration-500 ease-in-out w-16 hover:w-64 flex flex-col py-4 rounded-box">
+    <aside class="w-64 bg-gray-800 p-4 rounded-box">
       <div class="flex items-center justify-center mb-6">
         <img src="profile.png" width="50" height="50" class="rounded-full" alt="Logo" />
       </div>
-      <nav class="flex flex-col space-y-1 px-2">
-        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+      <nav class="flex flex-col space-y-1">
+        <a href="#" class="nav-wrapper">
           <div class="nav-item">
             <span>🏠</span><span class="text-sm font-medium">Home</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+        <a href="#" class="nav-wrapper">
           <div class="nav-item">
             <span>📄</span><span class="text-sm font-medium">Status</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+        <a href="#" class="nav-wrapper">
           <div class="nav-item">
             <span>🛠</span><span class="text-sm font-medium">Support</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+        <a href="#" class="nav-wrapper">
           <div class="nav-item">
             <span>⚙️</span><span class="text-sm font-medium">Dashboard</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+        <a href="#" class="nav-wrapper">
           <div class="nav-item">
             <span>📋</span><span class="text-sm font-medium">Commands</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+        <a href="#" class="nav-wrapper">
           <div class="nav-item">
             <span>👤</span><span class="text-sm font-medium">Profil</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+        <a href="#" class="nav-wrapper">
           <div class="nav-item">
             <span>⭐</span><span class="text-sm font-medium">Premium</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper group-hover:bg-transparent">
+        <a href="#" class="nav-wrapper">
           <div class="nav-item">
             <span>❓</span><span class="text-sm font-medium">Hilfe</span>
           </div>
@@ -118,7 +100,7 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 p-10 relative z-10">
+    <main class="flex-1 p-10">
       <div class="flex justify-between items-center mb-10">
         <h1 class="text-3xl font-bold text-white">👋 Willkommen, o7_tobi</h1>
         <div class="flex items-center gap-3">
@@ -149,8 +131,8 @@
         <img src="https://placehold.co/300x150/9b5de5/ffffff?text=Welcome+Card" class="rounded-xl shadow-md" />
       </section>
     </main>
+
   </div>
 
 </body>
 </html>
-
