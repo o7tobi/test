@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>o7_bot</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #9b5de5;
+      --primary-hover: #7b3dd4;
+    }
+
+    .rounded-box {
+      border-radius: 1rem;
+    }
+
+    .nav-item {
+      transition: transform 0.4s ease, text-shadow 0.4s ease;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-wrapper:hover .nav-item {
+      transform: translateX(14px);
+      text-shadow: 0 0 8px rgba(155, 93, 229, 0.6);
+    }
+
+    .sidebar-collapsed span.text-sm {
+      display: none;
+    }
+
+    .sidebar-collapsed .nav-item {
+      justify-content: center;
+    }
+
+    #sidebar {
+      width: 4rem;
+    }
+
+    #sidebar:hover {
+      width: 16rem;
+    }
+
+    #sidebar.sidebar-collapsed:hover span.text-sm {
+      display: inline;
+    }
+
+    #sidebar.sidebar-collapsed:hover .nav-item {
+      justify-content: flex-start;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans relative overflow-hidden">
+
+  <div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar-collapsed bg-gray-800 p-4 rounded-box transition-all duration-300 overflow-hidden">
+      <div class="flex items-center justify-center mb-6">
+        <img src="profile.png" width="50" height="50" class="rounded-full" alt="Logo" />
+      </div>
+      <nav class="flex flex-col space-y-1">
+        <a href="#" class="nav-wrapper"><div class="nav-item"><span>🏠</span><span class="text-sm font-medium">Home</span></div></a>
+        <a href="#" class="nav-wrapper"><div class="nav-item"><span>📄</span><span class="text-sm font-medium">Status</span></div></a>
+        <a href="#" class="nav-wrapper"><div class="nav-item"><span>🛠</span><span class="text-sm font-medium">Support</span></div></a>
+        <a href="#" class="nav-wrapper"><div class="nav-item"><span>⚙️</span><span class="text-sm font-medium">Dashboard</span></div></a>
+        <a href="#" class="nav-wrapper"><div class="nav-item"><span>📋</span><span class="text-sm font-medium">Commands</span></div></a>
+        <a href="#" class="nav-wrapper"><div class="nav-item"><span>👤</span><span class="text-sm font-medium">Profil</span></div></a>
+        <a href="#" class="nav-wrapper"><div class="nav-item"><span>⭐</span><span class="text-sm font-medium">Premium</span></div></a>
+        <a href="#" class="nav-wrapper"><div class="nav-item"><span>❓</span><span class="text-sm font-medium">Hilfe</span></div></a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+      <!-- Header -->
+      <div class="flex justify-between items-center mb-8">
+        <h1 class="text-xl font-bold">Name</h1>
+        <div class="flex items-center gap-4">
+          <select class="bg-gray-700 text-white px-3 py-1 rounded">
+            <option>5</option>
+            <option>10</option>
+            <option>25</option>
+          </select>
+          <input type="text" placeholder="🔍 Suche" class="px-3 py-1 bg-gray-700 text-white rounded" />
+        </div>
+      </div>
+
+      <!-- Server Cards -->
+      <div class="space-y-4">
+        <!-- Beispielhafte Servereinträge -->
+        <div class="flex items-center gap-4 bg-gray-800 p-4 rounded-lg shadow">
+          <img src="https://cdn.discordapp.com/embed/avatars/0.png" class="w-14 h-14 rounded" />
+          <span class="text-red-500 font-medium">Mini's Server</span>
+        </div>
+        <div class="flex items-center gap-4 bg-gray-800 p-4 rounded-lg shadow">
+          <img src="https://cdn.discordapp.com/embed/avatars/1.png" class="w-14 h-14 rounded" />
+          <span class="text-red-500 font-medium">o7_server</span>
+        </div>
+        <div class="flex items-center gap-4 bg-gray-800 p-4 rounded-lg shadow">
+          <img src="https://cdn.discordapp.com/embed/avatars/2.png" class="w-14 h-14 rounded" />
+          <span class="text-red-500 font-medium">Paranoids</span>
+        </div>
+        <div class="flex items-center gap-4 bg-gray-800 p-4 rounded-lg shadow">
+          <img src="https://cdn.discordapp.com/embed/avatars/3.png" class="w-14 h-14 rounded" />
+          <span class="text-red-500 font-medium">Raze STRYVE</span>
+        </div>
+        <div class="flex items-center gap-4 bg-gray-800 p-4 rounded-lg shadow">
+          <img src="https://cdn.discordapp.com/embed/avatars/4.png" class="w-14 h-14 rounded" />
+          <span class="text-red-500 font-medium">rease07</span>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="flex justify-center items-center mt-10 space-x-4">
+        <button class="px-4 py-1 bg-gray-700 text-white rounded">‹ Previous</button>
+        <button class="px-3 py-1 bg-red-600 text-white rounded-full">1</button>
+        <button class="px-4 py-1 bg-gray-700 text-white rounded">Next ›</button>
+      </div>
+
+      <!-- Footer -->
+      <footer class="text-gray-500 text-xs mt-10 text-center">
+        Copyright © 2020 - 2025 Quare CommV. All rights reserved |
+        <a href="#" class="underline">Terms and Conditions</a>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
