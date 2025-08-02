@@ -1,45 +1,56 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Erste Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            padding: 20px;
-            text-align: center;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discord Bot Control Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-900 text-white font-sans">
 
-    <h1>Willkommen auf meiner Website</h1>
-    <p>Dies ist ein einfacher HTML-Code mit Stil und einem Button.</p>
-    <button onclick="alert('Hallo Welt!')">Klick mich!</button>
+  <!-- Header -->
+  <header class="bg-gray-800 p-4 shadow-md">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">⚙️ Discord Bot Control Panel</h1>
+      <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded">Logout</button>
+    </div>
+  </header>
 
-<h2>HTML Links</h2>
-<p>HTML links are defined with the a tag:</p>
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
 
-<a href="https://www.youtube.com/">This is a link</a>    
+    <!-- Bot Status -->
+    <section class="bg-gray-800 p-4 rounded-xl shadow">
+      <h2 class="text-lg font-semibold mb-2">Bot Status</h2>
+      <p class="mb-4">Status: <span class="text-green-400">Online</span></p>
+      <button class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded w-full mb-2">Bot stoppen</button>
+      <button class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded w-full">Bot starten</button>
+    </section>
 
-<h2>HTML Links</h2>
-<p>HTML links are defined with the a tag:</p>
+    <!-- Kanalverwaltung -->
+    <section class="bg-gray-800 p-4 rounded-xl shadow">
+      <h2 class="text-lg font-semibold mb-2">Kanal-Verwaltung</h2>
+      <input type="text" placeholder="Kanal-ID" class="w-full mb-2 px-3 py-2 rounded bg-gray-700 border border-gray-600" />
+      <button class="bg-yellow-600 hover:bg-yellow-700 px-4 py-2 rounded w-full mb-2">Kanal umbenennen</button>
+      <button class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded w-full mb-2">Limit setzen</button>
+      <button class="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded w-full">Kanal löschen</button>
+    </section>
 
-<a href="https://www.youtube.com/">This is a 2nd link</a>    
+    <!-- Benutzerverwaltung -->
+    <section class="bg-gray-800 p-4 rounded-xl shadow">
+      <h2 class="text-lg font-semibold mb-2">Benutzer-Verwaltung</h2>
+      <input type="text" placeholder="User-ID" class="w-full mb-2 px-3 py-2 rounded bg-gray-700 border border-gray-600" />
+      <button class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded w-full mb-2">User kicken</button>
+      <button class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded w-full mb-2">User muten</button>
+      <button class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded w-full">User entmuten</button>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 p-4 text-center text-sm text-gray-400 mt-6">
+    &copy; 2025 DeinBotName - Control Panel
+  </footer>
 
 </body>
 </html>
