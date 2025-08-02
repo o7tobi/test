@@ -3,161 +3,199 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>o7_bot</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>o7_bot Dashboard</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     :root {
-      --primary: #9b5de5;
-      --primary-hover: #7b3dd4;
+      --background: #1e1e2f;
+      --foreground: #2c2c3e;
+      --primary: #8a4fff;
+      --primary-hover: #7a3fe0;
+      --text: #ffffff;
+      --text-muted: #aaaaaa;
     }
 
-    .rounded-box {
-      border-radius: 1rem;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    aside {
+      width: 250px;
+      background-color: var(--foreground);
+      padding: 1rem;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    main {
+      margin-left: 250px;
+      padding: 2rem;
+      flex: 1;
+      transition: margin 0.3s ease;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .nav-wrapper {
+      text-decoration: none;
+      color: var(--text);
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      transition: background-color 0.2s;
+    }
+
+    .nav-wrapper:hover {
+      background-color: var(--primary-hover);
     }
 
     .nav-item {
-      transition: transform 0.4s ease, text-shadow 0.4s ease;
-      padding: 0.75rem 1rem;
-      border-radius: 0.5rem;
-      width: 100%;
       display: flex;
       align-items: center;
       gap: 0.75rem;
     }
 
-    .nav-wrapper:hover .nav-item {
-      transform: translateX(14px);
-      text-shadow: 0 0 8px rgba(155, 93, 229, 0.6);
+    .nav-item span:first-child {
+      font-size: 1.5rem;
     }
 
-    .nav-wrapper {
-      display: block;
-      width: 100%;
-      padding: 4px;
-      border-radius: 0.75rem;
-      transition: background 0.3s ease;
+    .button-dashboard {
+      background-color: var(--primary);
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 9999px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 2rem;
     }
 
-    .sidebar-collapsed span.text-sm {
+    .button-dashboard:hover {
+      background-color: var(--primary-hover);
+    }
+
+    img.profile {
+      margin-top: 2rem;
+      width: 150px;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    @media (max-width: 768px) {
+      aside {
+        width: 200px;
+      }
+
+      main {
+        margin-left: 200px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      aside {
+        position: absolute;
+        left: -200px;
+        transition: left 0.3s ease;
+      }
+
+      aside.open {
+        left: 0;
+      }
+
+      main {
+        margin-left: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        z-index: 1000;
+        background-color: var(--primary);
+        border: none;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+      }
+    }
+
+    .menu-toggle {
       display: none;
     }
 
-    .sidebar-collapsed .nav-item {
-      justify-content: center;
-    }
-
-    #sidebar {
-      width: 4rem;
-    }
-
-    #sidebar:hover {
-      width: 16rem;
-    }
-
-    #sidebar.sidebar-collapsed:hover {
-      width: 16rem;
-    }
-
-    #sidebar.sidebar-collapsed:hover span.text-sm {
-      display: inline;
-    }
-
-    #sidebar.sidebar-collapsed:hover .nav-item {
-      justify-content: flex-start;
-    }
-
-    #sidebar button {
-      display: none;
-    }
   </style>
 </head>
-<body class="bg-gray-900 text-white font-sans relative overflow-hidden">
+<body>
 
-  <div class="flex min-h-screen">
+  <!-- Mobile Toggle Button -->
+  <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
 
-    <!-- Sidebar -->
-    <aside id="sidebar" class="sidebar-collapsed bg-gray-800 p-4 rounded-box transition-all duration-300 overflow-hidden">
-      <div class="flex items-center justify-center mb-6">
-        <img src="profile.png" width="50" height="50" class="rounded-full" alt="Logo" />
+  <aside id="sidebar">
+    <h2 style="margin-bottom: 1rem;">🧠 o7_bot</h2>
+
+    <a href="/" class="nav-wrapper">
+      <div class="nav-item">
+        <span>🏠</span><span>Startseite</span>
       </div>
-      <nav class="flex flex-col space-y-1">
-        <a href="#" class="nav-wrapper">
-          <div class="nav-item">
-            <span>🏠</span><span class="text-sm font-medium">Home</span>
-          </div>
-        </a>
-        <a href="#" class="nav-wrapper">
-          <div class="nav-item">
-            <span>📄</span><span class="text-sm font-medium">Status</span>
-          </div>
-        </a>
-        <a href="#" class="nav-wrapper">
-          <div class="nav-item">
-            <span>🛠</span><span class="text-sm font-medium">Support</span>
-          </div>
-        </a>
-        <a href="#" class="nav-wrapper">
-          <div class="nav-item">
-            <span>⚙️</span><span class="text-sm font-medium">Dashboard</span>
-          </div>
-        </a>
-        <a href="#" class="nav-wrapper">
-          <div class="nav-item">
-            <span>📋</span><span class="text-sm font-medium">Commands</span>
-          </div>
-        </a>
-        <a href="#" class="nav-wrapper">
-          <div class="nav-item">
-            <span>👤</span><span class="text-sm font-medium">Profil</span>
-          </div>
-        </a>
-        <a href="#" class="nav-wrapper">
-          <div class="nav-item">
-            <span>⭐</span><span class="text-sm font-medium">Premium</span>
-          </div>
-        </a>
-        <a href="#" class="nav-wrapper">
-          <div class="nav-item">
-            <span>❓</span><span class="text-sm font-medium">Hilfe</span>
-          </div>
-        </a>
-      </nav>
-    </aside>
+    </a>
 
-    <!-- Main Content -->
-    <main class="flex-1 p-10">
-      <div class="flex justify-between items-center mb-10">
-        <h1 class="text-3xl font-bold text-white">👋 Willkommen, o7_tobi</h1>
-        <div class="flex items-center gap-3">
-          <span class="text-sm text-gray-400">Online</span>
-          <div class="w-10 h-10 rounded-full bg-cover bg-center" style="background-image: url('https://cdn.discordapp.com/embed/avatars/0.png')"></div>
-        </div>
+    <a href="/dashboard" class="nav-wrapper">
+      <div class="nav-item">
+        <span>⚙️</span><span>Dashboard</span>
       </div>
+    </a>
 
-      <section class="text-center bg-gray-800 p-10 rounded-box shadow-lg">
-        <h2 class="text-4xl font-bold mb-3">The only Discord bot you’ll ever need!</h2>
-        <p class="text-gray-400 mb-6">New discord bot.</p>
-        <div class="flex justify-center gap-4">
-          <a href="#" class="bg-[var(--primary)] hover:bg-[var(--primary-hover)] px-6 py-3 rounded-full text-white font-medium">Add to Discord</a>
-          <a href="#" class="border border-[var(--primary)] text-[var(--primary)] px-6 py-3 rounded-full font-medium hover:bg-[var(--primary-hover)] hover:text-white">See Features</a>
-        </div>
-        <div class="mt-10">
-          <img src="profile.png" width="150" height="75" class="mx-auto rounded-xl shadow-lg" />
-        </div>
-      </section>
+    <a href="/einstellungen" class="nav-wrapper">
+      <div class="nav-item">
+        <span>🛠</span><span>Einstellungen</span>
+      </div>
+    </a>
 
-      <section class="mt-20 flex flex-col md:flex-row items-center justify-between gap-8 bg-gray-800 p-6 rounded-box shadow-md">
-        <div class="max-w-md">
-          <h3 class="text-xl font-semibold text-[var(--primary)] mb-2">👋 Willkommen neue Mitglieder</h3>
-          <p class="text-gray-400 text-sm">
-            Mache neue Mitglieder mit Willkommensnachrichten oder Regeln vertraut. Du kannst eine Karte anzeigen oder einfache Nachrichten verwenden.
-          </p>
-        </div>
-        <img src="https://placehold.co/300x150/9b5de5/ffffff?text=Welcome+Card" class="rounded-xl shadow-md" />
-      </section>
-    </main>
-  </div>
+    <a href="/logout" class="nav-wrapper">
+      <div class="nav-item">
+        <span>🚪</span><span>Logout</span>
+      </div>
+    </a>
+  </aside>
+
+  <main>
+    <h1>Willkommen auf o7-tobi.de</h1>
+    <p>Dies ist dein personalisiertes Dashboard.</p>
+
+    <img src="profile.png" class="profile" alt="Profilbild" />
+
+    <button onclick="window.location.href='/dashboard'" class="button-dashboard">
+      ➤ Zum Dashboard
+    </button>
+  </main>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("open");
+    }
+  </script>
 </body>
 </html>
-
