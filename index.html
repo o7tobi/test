@@ -46,6 +46,30 @@
     .sidebar-collapsed .nav-item {
       justify-content: center;
     }
+
+    #sidebar {
+      width: 4rem;
+    }
+
+    #sidebar:hover {
+      width: 16rem;
+    }
+
+    #sidebar.sidebar-collapsed:hover {
+      width: 16rem;
+    }
+
+    #sidebar.sidebar-collapsed:hover span.text-sm {
+      display: inline;
+    }
+
+    #sidebar.sidebar-collapsed:hover .nav-item {
+      justify-content: flex-start;
+    }
+
+    #sidebar button {
+      display: none;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white font-sans relative overflow-hidden">
@@ -53,10 +77,7 @@
   <div class="flex min-h-screen">
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="w-64 bg-gray-800 p-4 rounded-box transition-all duration-300 overflow-hidden">
-      <button onclick="toggleSidebar()" class="mb-6 text-white focus:outline-none">
-        ☰
-      </button>
+    <aside id="sidebar" class="sidebar-collapsed bg-gray-800 p-4 rounded-box transition-all duration-300 overflow-hidden">
       <div class="flex items-center justify-center mb-6">
         <img src="profile.png" width="50" height="50" class="rounded-full" alt="Logo" />
       </div>
@@ -137,14 +158,6 @@
       </section>
     </main>
   </div>
-
-  <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('w-64');
-      sidebar.classList.toggle('w-16');
-      sidebar.classList.toggle('sidebar-collapsed');
-    }
-  </script>
 </body>
 </html>
+
