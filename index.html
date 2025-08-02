@@ -11,11 +11,13 @@
       --primary: #9b5de5;
       --primary-hover: #7b3dd4;
     }
+
     aside {
       z-index: 50;
       border-top-right-radius: 1rem;
       border-bottom-right-radius: 1rem;
     }
+
     main::before {
       content: "";
       position: absolute;
@@ -27,12 +29,24 @@
       transition: width 0.3s ease-in-out;
       pointer-events: none;
     }
+
     .group:hover + main::before,
     aside:hover + main::before {
       width: 100%;
     }
+
     .rounded-box {
       border-radius: 1rem;
+    }
+
+    /* 🔥 Neue Klasse für Hover-Effekt */
+    .link-text-hover {
+      transition: transform 0.2s ease, text-shadow 0.2s ease;
+    }
+
+    .link-text-hover:hover {
+      transform: scale(1.05);
+      text-shadow: 0 0 8px rgba(155, 93, 229, 0.7);
     }
   </style>
 </head>
@@ -48,35 +62,35 @@
       <nav class="flex flex-col space-y-4">
         <a href="#" class="flex items-center gap-4 px-4 py-2 hover:bg-gray-700 rounded-lg">
           <span>🏠</span>
-          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">Home</span>
+          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 link-text-hover">Home</span>
         </a>
         <a href="#" class="flex items-center gap-4 px-4 py-2 hover:bg-gray-700 rounded-lg">
           <span>📄</span>
-          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">Status</span>
+          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 link-text-hover">Status</span>
         </a>
         <a href="#" class="flex items-center gap-4 px-4 py-2 hover:bg-gray-700 rounded-lg">
           <span>🛠</span>
-          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">Support</span>
+          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 link-text-hover">Support</span>
         </a>
         <a href="#" class="flex items-center gap-4 px-4 py-2 hover:bg-gray-700 rounded-lg">
           <span>⚙️</span>
-          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">Dashboard</span>
+          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 link-text-hover">Dashboard</span>
         </a>
         <a href="#" class="flex items-center gap-4 px-4 py-2 hover:bg-gray-700 rounded-lg">
           <span>📋</span>
-          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">Commands</span>
+          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 link-text-hover">Commands</span>
         </a>
         <a href="#" class="flex items-center gap-4 px-4 py-2 hover:bg-gray-700 rounded-lg">
           <span>👤</span>
-          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">Profil</span>
+          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 link-text-hover">Profil</span>
         </a>
         <a href="#" class="flex items-center gap-4 px-4 py-2 hover:bg-gray-700 rounded-lg">
           <span>⭐</span>
-          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">Premium</span>
+          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 link-text-hover">Premium</span>
         </a>
         <a href="#" class="flex items-center gap-4 px-4 py-2 hover:bg-gray-700 rounded-lg">
           <span>❓</span>
-          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">Hilfe</span>
+          <span class="text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 link-text-hover">Hilfe</span>
         </a>
       </nav>
     </aside>
