@@ -39,17 +39,17 @@
       border-radius: 1rem;
     }
 
-    /* ✨ Hovereffekt für Emoji + Text */
+    /* Hovereffekt für Icon + Text */
     .hover-move-group {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      transition: transform 0.25s ease, text-shadow 0.25s ease;
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), text-shadow 0.4s ease;
     }
 
     .hover-move-group:hover {
-      transform: translateX(6px);
-      text-shadow: 0 0 8px rgba(155, 93, 229, 0.7);
+      transform: translateX(12px);
+      text-shadow: 0 0 10px rgba(155, 93, 229, 0.7);
     }
   </style>
 </head>
