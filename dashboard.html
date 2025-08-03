@@ -10,6 +10,24 @@
     :root {
       --primary: #9b5de5;
       --primary-hover: #7b3dd4;
+      --bg-light: #f9fafb;
+      --text-light: #111827;
+    }
+
+    body {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Dunkelmodus (Standard) */
+    body {
+      background-color: #1a202c;
+      color: white;
+    }
+
+    /* Hellmodus */
+    body.light-mode {
+      background-color: var(--bg-light);
+      color: var(--text-light);
     }
 
     .rounded-box {
@@ -24,12 +42,19 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      color: white;
     }
 
     .nav-wrapper:hover .nav-item {
       transform: translateX(14px);
       text-shadow: 0 0 8px rgba(155, 93, 229, 0.6);
+    }
+
+    .nav-wrapper {
+      display: block;
+      width: 100%;
+      padding: 4px;
+      border-radius: 0.75rem;
+      transition: background 0.3s ease;
     }
 
     .sidebar-collapsed span.text-sm {
@@ -40,12 +65,20 @@
       justify-content: center;
     }
 
+    /* Sidebar mit Fade-in Animation */
     #sidebar {
       width: 4rem;
+      background-color: #2d3748; /* Dunkel */
+      transition: width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+      opacity: 0.6;
+      transform: translateX(-10px);
+      overflow: hidden;
     }
 
     #sidebar:hover {
       width: 16rem;
+      opacity: 1;
+      transform: translateX(0);
     }
 
     #sidebar.sidebar-collapsed:hover span.text-sm {
@@ -56,14 +89,37 @@
       justify-content: flex-start;
     }
 
+    /* Sidebar hell */
+    body.light-mode #sidebar {
+      background-color: #e5e7eb;
+    }
+
     /* ✅ Neon-Lila für aktiven Menüpunkt */
     .nav-wrapper.active .nav-item {
-      color: #ff00ff !important;
+      color: #ff00ff;
       text-shadow:
         0 0 5px #ff00ff,
         0 0 10px #ff00ff,
         0 0 20px #ff00ff,
-        0 0 40px rgba(255, 0, 255, 0.8);
+        0 0 30px rgba(255, 0, 255, 0.5);
+    }
+
+    /* Hell/Dunkel Button Styles */
+    #theme-toggle {
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+    #theme-toggle:hover {
+      background-color: rgba(155, 93, 229, 0.2);
     }
   </style>
 </head>
@@ -72,7 +128,7 @@
   <div class="flex min-h-screen">
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="sidebar-collapsed bg-gray-800 p-4 rounded-box transition-all duration-300 overflow-hidden">
+    <aside id="sidebar" class="sidebar-collapsed p-4 rounded-box transition-all duration-300 overflow-hidden">
       <div class="flex items-center justify-center mb-6">
         <img src="profile.png" width="50" height="50" class="rounded-full" alt="Logo" />
       </div>
@@ -121,67 +177,75 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 p-8">
-      <!-- Header -->
-      <div class="flex justify-between items-center mb-8">
-        <h1 class="text-xl font-bold">Name</h1>
-        <div class="flex items-center gap-4">
-          <select class="bg-gray-700 text-white px-3 py-1 rounded">
-            <option>5</option>
-            <option>10</option>
-            <option>25</option>
-          </select>
-          <input type="text" placeholder="🔍 Suche" class="px-3 py-1 bg-gray-700 text-white rounded" />
+    <main class="flex-1 p-10 relative">
+
+      <!-- Hell/Dunkel Button oben rechts -->
+      <button id="theme-toggle" aria-label="Toggle light/dark mode" title="Hell/Dunkel Modus wechseln" 
+              class="absolute top-4 right-4 z-50">
+        🌙
+      </button>
+
+      <div class="flex justify-between items-center mb-10">
+        <h1 class="text-3xl font-bold text-white">👋 Willkommen, o7_tobi</h1>
+        <div class="flex items-center gap-3">
+          <span class="text-sm text-gray-400">Online</span>
+          <div class="w-10 h-10 rounded-full bg-cover bg-center" style="background-image: url('https://cdn.discordapp.com/embed/avatars/0.png')"></div>
         </div>
       </div>
 
-      <!-- Server Cards -->
-      <div class="space-y-4">
-        <!-- Beispielhafte Servereinträge -->
-        <div class="flex items-center gap-4 bg-gray-800 p-4 rounded-lg shadow">
-          <img src="https://cdn.discordapp.com/embed/avatars/0.png" class="w-14 h-14 rounded" />
-          <span class="text-red-500 font-medium">Test!</span>
+      <section class="text-center bg-gray-800 p-10 rounded-box shadow-lg">
+        <h2 class="text-4xl font-bold mb-3">The only Discord bot you’ll ever need!</h2>
+        <p class="text-gray-400 mb-6">New discord bot.</p>
+        <div class="flex justify-center gap-4">
+          <a href="#" class="bg-[var(--primary)] hover:bg-[var(--primary-hover)] px-6 py-3 rounded-full text-white font-medium">Add to Discord</a>
+          <a href="#" class="border border-[var(--primary)] text-[var(--primary)] px-6 py-3 rounded-full font-medium hover:bg-[var(--primary-hover)] hover:text-white">See Features</a>
         </div>
-        <div class="flex items-center gap-4 bg-gray-800 p-4 rounded-lg shadow">
-          <img src="https://cdn.discordapp.com/embed/avatars/1.png" class="w-14 h-14 rounded" />
-          <span class="text-red-500 font-medium">Test!</span>
+        <div class="mt-10">
+          <img src="profile.png" width="150" height="75" class="mx-auto rounded-xl shadow-lg" />
         </div>
-        <div class="flex items-center gap-4 bg-gray-800 p-4 rounded-lg shadow">
-          <img src="https://cdn.discordapp.com/embed/avatars/2.png" class="w-14 h-14 rounded" />
-          <span class="text-red-500 font-medium">Test!</span>
-        </div>
-        <div class="flex items-center gap-4 bg-gray-800 p-4 rounded-lg shadow">
-          <img src="https://cdn.discordapp.com/embed/avatars/3.png" class="w-14 h-14 rounded" />
-          <span class="text-red-500 font-medium">Test!</span>
-        </div>
-        <div class="flex items-center gap-4 bg-gray-800 p-4 rounded-lg shadow">
-          <img src="https://cdn.discordapp.com/embed/avatars/4.png" class="w-14 h-14 rounded" />
-          <span class="text-red-500 font-medium">Test!</span>
-        </div>
-      </div>
+      </section>
 
-      <!-- Pagination -->
-      <div class="flex justify-center items-center mt-10 space-x-4">
-        <button class="px-4 py-1 bg-gray-700 text-white rounded">‹ Previous</button>
-        <button class="px-3 py-1 bg-red-600 text-white rounded-full">1</button>
-        <button class="px-4 py-1 bg-gray-700 text-white rounded">Next ›</button>
-      </div>
-
-      <!-- Footer -->
-      <footer class="text-gray-500 text-xs mt-10 text-center">
-        Copyright © 2020 - 2025 Quare CommV. All rights reserved |
-        <a href="#" class="underline">Terms and Conditions</a>
-      </footer>
+      <section class="mt-20 flex flex-col md:flex-row items-center justify-between gap-8 bg-gray-800 p-6 rounded-box shadow-md">
+        <div class="max-w-md">
+          <h3 class="text-xl font-semibold text-[var(--primary)] mb-2">👋 Willkommen neue Mitglieder</h3>
+          <p class="text-gray-400 text-sm">
+            Mache neue Mitglieder mit Willkommensnachrichten oder Regeln vertraut. Du kannst eine Karte anzeigen oder einfache Nachrichten verwenden.
+          </p>
+        </div>
+        <img src="https://placehold.co/300x150/9b5de5/ffffff?text=Welcome+Card" class="rounded-xl shadow-md" />
+      </section>
     </main>
   </div>
 
-  <!-- ✅ Script zum Aktivieren des passenden Menüpunkts -->
+  <!-- Script: Markiert den aktiven Menüpunkt anhand der URL -->
   <script>
-    const currentUrl = window.location.href;
-    document.querySelectorAll('.nav-wrapper').forEach(link => {
-      if (currentUrl.startsWith(link.href)) {
-        link.classList.add('active');
+    window.addEventListener('DOMContentLoaded', () => {
+      const currentUrl = window.location.href;
+      document.querySelectorAll('.nav-wrapper').forEach(link => {
+        if (currentUrl.startsWith(link.href)) {
+          link.classList.add('active');
+        }
+      });
+
+      // Theme Toggle Logik
+      const toggleButton = document.getElementById('theme-toggle');
+      const body = document.body;
+
+      // Initial Zustand aus localStorage laden
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        body.classList.add('light-mode');
+        toggleButton.textContent = '☀️';
+      } else {
+        toggleButton.textContent = '🌙';
       }
+
+      toggleButton.addEventListener('click', () => {
+        body.classList.toggle('light-mode');
+        const isLight = body.classList.contains('light-mode');
+        toggleButton.textContent = isLight ? '☀️' : '🌙';
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      });
     });
   </script>
 </body>
