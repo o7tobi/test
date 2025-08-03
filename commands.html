@@ -6,7 +6,7 @@
   <title>Commands Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Optional für smooth toggle Animation */
+    /* Für smooth toggle Animation */
     .content {
       transition: max-height 0.3s ease;
       overflow: hidden;
@@ -18,21 +18,19 @@
   <h1 class="text-3xl font-bold mb-6 text-purple-400">Commands Übersicht</h1>
 
   <!-- Scrollbarer Container -->
-  <div class="max-h-[600px] overflow-y-auto space-y-4">
-
-    <!-- Einzelnes Akkordeon-Feld (20x davon) -->
-    <!-- Wir erzeugen 20 Felder mit JS weiter unten -->
+  <div id="commands-container" class="max-h-[600px] overflow-y-auto space-y-4">
+    <!-- JS fügt hier die Felder ein -->
   </div>
 
   <script>
-    const container = document.querySelector('div.max-h-[600px]');
+    const container = document.getElementById('commands-container');
 
     for(let i=1; i<=20; i++) {
-      // Create card container
+      // Karte erstellen
       const card = document.createElement('div');
       card.className = 'bg-gray-800 border border-purple-700 rounded-2xl shadow-lg';
 
-      // Create header (clickable)
+      // Header (klickbar)
       const header = document.createElement('button');
       header.className = 'w-full flex items-center justify-between px-4 py-3 text-purple-400 font-semibold text-lg rounded-t-2xl focus:outline-none';
       header.innerHTML = `
@@ -44,12 +42,12 @@
         </div>
       `;
 
-      // Create content div (hidden initially)
+      // Inhalt (versteckt)
       const content = document.createElement('div');
       content.className = 'content max-h-0 px-4 pb-4 text-gray-300 text-sm';
       content.textContent = `Hier steht die ausführliche Beschreibung von Command ${i}. Du kannst beliebig viele Details, Optionen oder Beispiele hier einfügen.`;
 
-      // Toggle content on header click
+      // Toggle-Logik
       header.addEventListener('click', () => {
         const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
         if (isOpen) {
