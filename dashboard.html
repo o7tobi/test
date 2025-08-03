@@ -58,11 +58,16 @@
 
     .nav-wrapper.active .nav-item {
       color: #ff00ff !important;
+      border: 2px solid #ff00ff;
       text-shadow:
         0 0 5px #ff00ff,
         0 0 10px #ff00ff,
         0 0 20px #ff00ff,
         0 0 40px rgba(255, 0, 255, 0.8);
+      box-shadow:
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff,
+        0 0 40px rgba(255, 0, 255, 0.5);
     }
   </style>
 </head>
@@ -86,17 +91,17 @@
             <span>⚙️</span><span class="text-sm font-medium">Dashboard</span>
           </div>
         </a>
-        <a href="https://o7-tobi.de/commands" class="nav-wrapper">
+        <a href="https://o7-tobi.de/commands" class="nav-wrapper" id="commands-link">
           <div class="nav-item">
             <span>📋</span><span class="text-sm font-medium">Commands</span>
           </div>
         </a>
-        <a href="https://o7-tobi.de/profil" class="nav-wrapper">
+        <a href="https://o7-tobi.de/profil" class="nav-wrapper" id="profil-link">
           <div class="nav-item">
             <span>👤</span><span class="text-sm font-medium">Profil</span>
           </div>
         </a>
-        <a href="https://o7-tobi.de/premium" class="nav-wrapper">
+        <a href="https://o7-tobi.de/premium" class="nav-wrapper" id="premium-link">
           <div class="nav-item">
             <span>⭐</span><span class="text-sm font-medium">Premium</span>
           </div>
@@ -111,7 +116,6 @@
 
     <!-- Hauptbereich -->
     <main class="flex-1 p-6 overflow-y-auto">
-      <!-- Kopfzeile -->
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-3xl font-bold text-purple-400">Willkommen zurück</h2>
         <div class="flex items-center gap-4">
@@ -120,81 +124,37 @@
         </div>
       </div>
 
-<!-- Statistik-Karten Container -->
-<div class="flex flex-col gap-4 w-full mt-6">
-
-  <!-- Einzelne Statistik-Karte -->
-  <div class="bg-gray-800 border border-purple-700 rounded-2xl shadow-lg h-20 w-full flex items-center justify-between px-4">
-    <div class="flex flex-col justify-center">
-      <h3 class="text-lg font-semibold text-purple-400">Statistik A</h3>
-      <p class="text-gray-300 text-sm">Beispielinhalt für Statistik A.</p>
-    </div>
-    <button class="text-purple-400 hover:text-purple-300 text-xl">
-      ⚙️
-    </button>
-  </div>
-
-  <div class="bg-gray-800 border border-purple-700 rounded-2xl shadow-lg h-20 w-full flex items-center justify-between px-4">
-    <div class="flex flex-col justify-center">
-      <h3 class="text-lg font-semibold text-purple-400">Statistik B</h3>
-      <p class="text-gray-300 text-sm">Beispielinhalt für Statistik B.</p>
-    </div>
-    <button class="text-purple-400 hover:text-purple-300 text-xl">
-      ⚙️
-    </button>
-  </div>
-
-  <div class="bg-gray-800 border border-purple-700 rounded-2xl shadow-lg h-20 w-full flex items-center justify-between px-4">
-    <div class="flex flex-col justify-center">
-      <h3 class="text-lg font-semibold text-purple-400">Statistik C</h3>
-      <p class="text-gray-300 text-sm">Beispielinhalt für Statistik C.</p>
-    </div>
-    <button class="text-purple-400 hover:text-purple-300 text-xl">
-      ⚙️
-    </button>
-  </div>
-
-  <div class="bg-gray-800 border border-purple-700 rounded-2xl shadow-lg h-20 w-full flex items-center justify-between px-4">
-    <div class="flex flex-col justify-center">
-      <h3 class="text-lg font-semibold text-purple-400">Statistik D</h3>
-      <p class="text-gray-300 text-sm">Beispielinhalt für Statistik D.</p>
-    </div>
-    <button class="text-purple-400 hover:text-purple-300 text-xl">
-      ⚙️
-    </button>
-  </div>
-
-  <div class="bg-gray-800 border border-purple-700 rounded-2xl shadow-lg h-20 w-full flex items-center justify-between px-4">
-    <div class="flex flex-col justify-center">
-      <h3 class="text-lg font-semibold text-purple-400">Statistik E</h3>
-      <p class="text-gray-300 text-sm">Beispielinhalt für Statistik E.</p>
-    </div>
-    <button class="text-purple-400 hover:text-purple-300 text-xl">
-      ⚙️
-    </button>
-  </div>
-
-  <div class="bg-gray-800 border border-purple-700 rounded-2xl shadow-lg h-20 w-full flex items-center justify-between px-4">
-    <div class="flex flex-col justify-center">
-      <h3 class="text-lg font-semibold text-purple-400">Statistik F</h3>
-      <p class="text-gray-300 text-sm">Beispielinhalt für Statistik F.</p>
-    </div>
-    <button class="text-purple-400 hover:text-purple-300 text-xl">
-      ⚙️
-    </button>
-  </div>
-
-</div>
+      <!-- Statistik-Karten -->
+      <div class="flex flex-col gap-4 w-full mt-6">
+        <!-- Beispielkarten -->
+        <div class="bg-gray-800 border border-purple-700 rounded-2xl shadow-lg h-20 w-full flex items-center justify-between px-4">
+          <div class="flex flex-col justify-center">
+            <h3 class="text-lg font-semibold text-purple-400">Statistik A</h3>
+            <p class="text-gray-300 text-sm">Beispielinhalt für Statistik A.</p>
+          </div>
+          <button class="text-purple-400 hover:text-purple-300 text-xl">⚙️</button>
+        </div>
+        <!-- Dupliziere weitere Karten hier bei Bedarf -->
+      </div>
     </main>
   </div>
 
-  <!-- JS: Aktiver Menüpunkt bei URL /dashboard -->
+  <!-- JS zur Aktivierung des aktuellen Links -->
   <script>
-    const currentPath = window.location.pathname;
-    const dashboardLink = document.getElementById("dashboard-link");
+    const path = window.location.pathname;
+    const links = {
+      "/": "home-link",
+      "/dashboard": "dashboard-link",
+      "/commands": "commands-link",
+      "/profil": "profil-link",
+      "/premium": "premium-link"
+    };
 
-    if (currentPath === "/dashboard" || window.location.href.includes("/dashboard")) {
-      dashboardLink.classList.add("active");
+    for (const [key, id] of Object.entries(links)) {
+      if (path === key || window.location.href.includes(key)) {
+        document.getElementById(id).classList.add("active");
+        break;
+      }
     }
   </script>
 </body>
