@@ -56,13 +56,15 @@
       justify-content: flex-start;
     }
 
+    /* Pink-neon Umrandung für aktiven Menüpunkt */
     .nav-wrapper.active .nav-item {
-      color: #ff00ff !important;
-      text-shadow:
-        0 0 5px #ff00ff,
-        0 0 10px #ff00ff,
+      border: 2px solid #ff00ff;
+      box-shadow:
+        0 0 8px #ff00ff,
         0 0 20px #ff00ff,
         0 0 40px rgba(255, 0, 255, 0.8);
+      border-radius: 0.5rem;
+      color: #ff00ff !important;
     }
   </style>
 </head>
@@ -86,7 +88,7 @@
             <span>⚙️</span><span class="text-sm font-medium">Dashboard</span>
           </div>
         </a>
-        <a href="https://o7-tobi.de/commands" class="nav-wrapper">
+        <a href="https://o7-tobi.de/commands" class="nav-wrapper active">
           <div class="nav-item">
             <span>📋</span><span class="text-sm font-medium">Commands</span>
           </div>
@@ -108,5 +110,9 @@
         </a>
       </nav>
     </aside>
+  </div>
+
 </body>
 </html>
+
+
