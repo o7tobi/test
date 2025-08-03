@@ -110,48 +110,53 @@
   <div class="flex min-h-screen">
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="sidebar-collapsed p-4 rounded-box transition-all duration-300 overflow-hidden flex flex-col justify-between">
-      <div>
-        <div class="flex items-center justify-center mb-6">
-          <img src="profile.png" width="50" height="50" class="rounded-full" alt="Logo" />
-        </div>
-        <nav class="flex flex-col space-y-1">
-          <a href="https://o7-tobi.de/" class="nav-wrapper">
-            <div class="nav-item">
-              <span>🏠</span><span class="text-sm font-medium">Home</span>
-            </div>
-          </a>
-          <a href="https://o7-tobi.de/dashboard" class="nav-wrapper">
-            <div class="nav-item">
-              <span>⚙️</span><span class="text-sm font-medium">Dashboard</span>
-            </div>
-          </a>
-          <a href="https://o7-tobi.de/commands" class="nav-wrapper">
-            <div class="nav-item">
-              <span>📋</span><span class="text-sm font-medium">Commands</span>
-            </div>
-          </a>
-          <a href="https://o7-tobi.de/profil" class="nav-wrapper">
-            <div class="nav-item">
-              <span>👤</span><span class="text-sm font-medium">Profil</span>
-            </div>
-          </a>
-          <a href="https://o7-tobi.de/premium" class="nav-wrapper">
-            <div class="nav-item">
-              <span>⭐</span><span class="text-sm font-medium">Premium</span>
-            </div>
-          </a>
-          <a href="https://discord.gg/dfrvxTvyct" class="nav-wrapper">
-            <div class="nav-item">
-              <span>❓</span><span class="text-sm font-medium">Hilfe</span>
-            </div>
-          </a>
-        </nav>
+    <aside id="sidebar" class="sidebar-collapsed p-4 rounded-box transition-all duration-300 overflow-hidden">
+      <div class="flex items-center justify-center mb-6">
+        <img src="profile.png" width="50" height="50" class="rounded-full" alt="Logo" />
       </div>
-
+      <nav class="flex flex-col space-y-1">
+        <a href="https://o7-tobi.de/" class="nav-wrapper">
+          <div class="nav-item">
+            <span>🏠</span><span class="text-sm font-medium">Home</span>
+          </div>
+        </a>
+        <a href="https://o7-tobi.de/dashboard" class="nav-wrapper">
+          <div class="nav-item">
+            <span>⚙️</span><span class="text-sm font-medium">Dashboard</span>
+          </div>
+        </a>
+        <a href="https://o7-tobi.de/commands" class="nav-wrapper">
+          <div class="nav-item">
+            <span>📋</span><span class="text-sm font-medium">Commands</span>
+          </div>
+        </a>
+        <a href="https://o7-tobi.de/profil" class="nav-wrapper">
+          <div class="nav-item">
+            <span>👤</span><span class="text-sm font-medium">Profil</span>
+          </div>
+        </a>
+        <a href="https://o7-tobi.de/premium" class="nav-wrapper">
+          <div class="nav-item">
+            <span>⭐</span><span class="text-sm font-medium">Premium</span>
+          </div>
+        </a>
+        <a href="https://discord.gg/dfrvxTvyct" class="nav-wrapper">
+          <div class="nav-item">
+            <span>❓</span><span class="text-sm font-medium">Hilfe</span>
+          </div>
+        </a>
+      </nav>
+    </aside>
 
     <!-- Main Content -->
     <main class="flex-1 p-10 relative">
+
+      <!-- Toggle Light/Dark Button -->
+      <div class="absolute top-4 right-4">
+        <button id="theme-toggle" onclick="toggleLightMode()" class="px-4 py-2 bg-gray-700 rounded-full text-white hover:bg-gray-600 transition">
+          🌞 / 🌙
+        </button>
+      </div>
 
       <div class="flex justify-between items-center mb-10">
         <h1 class="text-3xl font-bold text-white">👋 Welcome</h1>
@@ -173,19 +178,9 @@
           <img src="profile.png" width="150" height="75" class="mx-auto rounded-xl shadow-lg" />
         </div>
       </section>
-    </main>
-  </div>
 
-  <!-- SCRIPTS -->
+  <!-- Highlight current nav -->
   <script>
-    function toggleLightMode() {
-      document.body.classList.add('fade-out');
-      setTimeout(() => {
-        document.body.classList.toggle('light-mode');
-        document.body.classList.remove('fade-out');
-      }, 300);
-    }
-
     window.addEventListener('DOMContentLoaded', () => {
       const currentUrl = window.location.href;
       document.querySelectorAll('.nav-wrapper').forEach(link => {
@@ -194,6 +189,14 @@
         }
       });
     });
+
+    function toggleLightMode() {
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        document.body.classList.toggle('light-mode');
+        document.body.classList.remove('fade-out');
+      }, 300); // Match CSS transition duration
+    }
   </script>
 </body>
 </html>
