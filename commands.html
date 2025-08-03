@@ -1,84 +1,252 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Commands Accordion</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>o7_bot</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    :root {
+      --primary: #9b5de5;
+      --primary-hover: #7b3dd4;
+      --bg-light: #f9fafb;
+      --text-light: #111827;
+    }
+
     body {
-      background-color: #1e1f22;
-      color: #ffffff;
-      font-family: Arial, sans-serif;
-      padding: 20px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    .accordion-item {
-      background-color: #2b2d31;
-      margin: 8px 0;
-      border-radius: 5px;
+    body.light-mode {
+      background-color: var(--bg-light);
+      color: var(--text-light);
     }
 
-    .accordion-header {
-      padding: 12px;
-      cursor: pointer;
-      user-select: none;
+    .rounded-box {
+      border-radius: 1rem;
     }
 
-    .accordion-content {
-      display: none;
-      padding: 10px 15px;
-      border-top: 1px solid #3a3b3f;
-      color: #bbbbbb;
+    .nav-item {
+      transition: transform 0.6s ease, text-shadow 0.4s ease;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
 
-    .command {
-      background-color: #3a3b3f;
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 5px;
-      font-family: monospace;
-      margin-top: 5px;
+    .nav-wrapper:hover .nav-item {
+      transform: translateX(14px);
+      text-shadow: 0 0 8px rgba(155, 93, 229, 0.6);
     }
 
-    .accordion-item.active .accordion-content {
+    .nav-wrapper {
       display: block;
+      width: 100%;
+      padding: 4px;
+      border-radius: 0.75rem;
+      transition: background 0.3s ease;
+    }
+
+    .sidebar-collapsed span.text-sm {
+      display: none;
+    }
+
+    .sidebar-collapsed .nav-item {
+      justify-content: center;
+    }
+
+    #sidebar {
+      width: 4rem;
+      background-color: #2d3748;
+      transition: width 0.3s ease, opacity 0.5s ease, transform 0.3s ease;
+      opacity: 0.6;
+      transform: translateX(-10px);
+      overflow: hidden;
+    }
+
+    #sidebar:hover {
+      width: 16rem;
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    #sidebar.sidebar-collapsed:hover span.text-sm {
+      display: inline;
+    }
+
+    #sidebar.sidebar-collapsed:hover .nav-item {
+      justify-content: flex-start;
+    }
+
+    .nav-wrapper.active .nav-item {
+      color: #ff00ff;
+      text-shadow:
+        0 0 5px #ff00ff,
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff,
+        0 0 30px rgba(255, 0, 255, 0.5);
+    }
+
+    #theme-toggle:hover {
+      background-color: rgba(155, 93, 229, 0.2);
     }
   </style>
 </head>
-<body>
+<body class="bg-gray-900 text-white font-sans relative overflow-hidden">
 
-  <div class="section">
-    <h2>Leveling Commands</h2>
+  <div class="flex min-h-screen">
 
-    <div class="accordion-item">
-      <div class="accordion-header">Profile</div>
-      <div class="accordion-content">
-        Shows your server profile.<br>
-        <div class="command">/profile @user</div>
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar-collapsed p-4 rounded-box transition-all duration-300 overflow-hidden">
+      <div class="flex items-center justify-center mb-6">
+        <img src="profile.png" width="50" height="50" class="rounded-full" alt="Logo" />
       </div>
-    </div>
+      <nav class="flex flex-col space-y-1">
+        <a href="https://o7-tobi.de/" class="nav-wrapper">
+          <div class="nav-item">
+            <span>🏠</span><span class="text-sm font-medium">Home</span>
+          </div>
+        </a>
+        <a href="https://o7-tobi.de/status" class="nav-wrapper">
+          <div class="nav-item">
+            <span>📄</span><span class="text-sm font-medium">Status</span>
+          </div>
+        </a>
+        <a href="https://o7-tobi.de/support" class="nav-wrapper">
+          <div class="nav-item">
+            <span>🛠</span><span class="text-sm font-medium">Support</span>
+          </div>
+        </a>
+        <a href="https://o7-tobi.de/dashboard" class="nav-wrapper">
+          <div class="nav-item">
+            <span>⚙️</span><span class="text-sm font-medium">Dashboard</span>
+          </div>
+        </a>
+        <a href="https://o7-tobi.de/commands" class="nav-wrapper">
+          <div class="nav-item">
+            <span>📋</span><span class="text-sm font-medium">Commands</span>
+          </div>
+        </a>
+        <a href="https://o7-tobi.de/profil" class="nav-wrapper">
+          <div class="nav-item">
+            <span>👤</span><span class="text-sm font-medium">Profil</span>
+          </div>
+        </a>
+        <a href="https://o7-tobi.de/premium" class="nav-wrapper">
+          <div class="nav-item">
+            <span>⭐</span><span class="text-sm font-medium">Premium</span>
+          </div>
+        </a>
+        <a href="https://o7-tobi.de/hilfe" class="nav-wrapper">
+          <div class="nav-item">
+            <span>❓</span><span class="text-sm font-medium">Hilfe</span>
+          </div>
+        </a>
+      </nav>
+    </aside>
 
-    <div class="accordion-item">
-      <div class="accordion-header">Rank</div>
-      <div class="accordion-content">
-        Displays your current rank and XP.<br>
-        <div class="command">/rank</div>
+    <!-- Main Content -->
+    <main class="flex-1 p-10 relative">
+
+      <div class="flex justify-between items-center mb-10">
+        <h1 class="text-3xl font-bold text-white">👋 Willkommen, o7_tobi</h1>
+        <div class="flex items-center gap-3">
+          <span class="text-sm text-gray-400">Online</span>
+          <div class="w-10 h-10 rounded-full bg-cover bg-center" style="background-image: url('https://cdn.discordapp.com/embed/avatars/0.png')"></div>
+        </div>
       </div>
-    </div>
 
-    <!-- Weitere Befehle können nach diesem Muster hinzugefügt werden -->
+      <section class="text-center bg-gray-800 p-10 rounded-box shadow-lg">
+        <h2 class="text-4xl font-bold mb-3">The only Discord bot you’ll ever need!</h2>
+        <p class="text-gray-400 mb-6">New discord bot.</p>
+        <div class="flex justify-center gap-4">
+          <a href="#" class="bg-[var(--primary)] hover:bg-[var(--primary-hover)] px-6 py-3 rounded-full text-white font-medium">Add to Discord</a>
+          <a href="#" class="border border-[var(--primary)] text-[var(--primary)] px-6 py-3 rounded-full font-medium hover:bg-[var(--primary-hover)] hover:text-white">See Features</a>
+        </div>
+        <div class="mt-10">
+          <img src="profile.png" width="150" height="75" class="mx-auto rounded-xl shadow-lg" />
+        </div>
+      </section>
 
+      <section class="mt-20 flex flex-col md:flex-row items-center justify-between gap-8 bg-gray-800 p-6 rounded-box shadow-md">
+        <div class="max-w-md">
+          <h3 class="text-xl font-semibold text-[var(--primary)] mb-2">👋 Willkommen neue Mitglieder</h3>
+          <p class="text-gray-400 text-sm">
+            Mache neue Mitglieder mit Willkommensnachrichten oder Regeln vertraut. Du kannst eine Karte anzeigen oder einfache Nachrichten verwenden.
+          </p>
+        </div>
+        <img src="https://placehold.co/300x150/9b5de5/ffffff?text=Welcome+Card" class="rounded-xl shadow-md" />
+      </section>
+
+      <!-- Accordion Section -->
+      <section class="mt-20 w-full bg-gray-800 p-6 rounded-box shadow-md">
+        <h3 class="text-2xl font-semibold text-white mb-4">📋 Befehle Übersicht</h3>
+
+        <!-- Leveling Commands -->
+        <div class="mb-6">
+          <h4 class="text-xl font-bold text-[var(--primary)] mb-2">Leveling Commands</h4>
+
+          <div class="bg-gray-700 rounded-lg overflow-hidden mb-2">
+            <button class="w-full text-left px-4 py-3 hover:bg-gray-600 accordion-toggle">📄 Profile</button>
+            <div class="accordion-content hidden px-4 pb-4 text-gray-300">
+              Zeigt dein Serverprofil an.<br>
+              <code class="bg-gray-600 px-2 py-1 rounded inline-block mt-2">/profile @user</code>
+            </div>
+          </div>
+
+          <div class="bg-gray-700 rounded-lg overflow-hidden mb-2">
+            <button class="w-full text-left px-4 py-3 hover:bg-gray-600 accordion-toggle">🏆 Rank</button>
+            <div class="accordion-content hidden px-4 pb-4 text-gray-300">
+              Zeigt deinen aktuellen Level-Status an.<br>
+              <code class="bg-gray-600 px-2 py-1 rounded inline-block mt-2">/rank</code>
+            </div>
+          </div>
+        </div>
+
+        <!-- Economy Commands -->
+        <div>
+          <h4 class="text-xl font-bold text-[var(--primary)] mb-2">Economy Commands</h4>
+
+          <div class="bg-gray-700 rounded-lg overflow-hidden mb-2">
+            <button class="w-full text-left px-4 py-3 hover:bg-gray-600 accordion-toggle">🎁 Daily</button>
+            <div class="accordion-content hidden px-4 pb-4 text-gray-300">
+              Beanspruche deine tägliche Belohnung.<br>
+              <code class="bg-gray-600 px-2 py-1 rounded inline-block mt-2">/daily</code>
+            </div>
+          </div>
+
+          <div class="bg-gray-700 rounded-lg overflow-hidden mb-2">
+            <button class="w-full text-left px-4 py-3 hover:bg-gray-600 accordion-toggle">🎰 Slots</button>
+            <div class="accordion-content hidden px-4 pb-4 text-gray-300">
+              Spiele am Spielautomaten und gewinne Credits.<br>
+              <code class="bg-gray-600 px-2 py-1 rounded inline-block mt-2">/slots</code>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
 
   <script>
-    const headers = document.querySelectorAll('.accordion-header');
-    headers.forEach(header => {
-      header.addEventListener('click', () => {
-        const item = header.parentElement;
-        item.classList.toggle('active');
+    window.addEventListener('DOMContentLoaded', () => {
+      const currentUrl = window.location.href;
+      document.querySelectorAll('.nav-wrapper').forEach(link => {
+        if (currentUrl.startsWith(link.href)) {
+          link.classList.add('active');
+        }
+      });
+
+      // Accordion
+      document.querySelectorAll('.accordion-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+          const content = button.nextElementSibling;
+          content.classList.toggle('hidden');
+        });
       });
     });
   </script>
-
 </body>
 </html>
