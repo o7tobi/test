@@ -65,20 +65,14 @@
       justify-content: center;
     }
 
-    /* Sidebar mit Fade-in Animation */
     #sidebar {
       width: 4rem;
       background-color: #2d3748; /* Dunkel */
-      transition: width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
-      opacity: 0.6;
-      transform: translateX(-10px);
-      overflow: hidden;
+      transition: background-color 0.3s ease;
     }
 
     #sidebar:hover {
       width: 16rem;
-      opacity: 1;
-      transform: translateX(0);
     }
 
     #sidebar.sidebar-collapsed:hover span.text-sm {
