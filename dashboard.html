@@ -56,14 +56,10 @@
       justify-content: flex-start;
     }
 
-    /* ✅ Neon-Lila für aktiven Menüpunkt */
+    /* Optional: dezente Markierung für aktiven Menüpunkt */
     .nav-wrapper.active .nav-item {
-      color: #ff00ff !important;
-      text-shadow:
-        0 0 5px #ff00ff,
-        0 0 10px #ff00ff,
-        0 0 20px #ff00ff,
-        0 0 40px rgba(255, 0, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.1);
+      font-weight: bold;
     }
   </style>
 </head>
@@ -127,7 +123,6 @@
 
       <!-- Server Cards -->
       <div class="space-y-4">
-        <!-- Beispielhafte Servereinträge -->
         <div class="flex items-center gap-4 bg-gray-800 p-4 rounded-lg shadow">
           <img src="https://cdn.discordapp.com/embed/avatars/0.png" class="w-14 h-14 rounded" />
           <span class="text-red-500 font-medium">Test!</span>
@@ -165,7 +160,6 @@
     </main>
   </div>
 
-  <!-- ✅ Script zum Aktivieren des passenden Menüpunkts -->
   <script>
     const currentUrl = window.location.href;
     document.querySelectorAll('.nav-wrapper').forEach(link => {
@@ -176,4 +170,3 @@
   </script>
 </body>
 </html>
-
