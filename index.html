@@ -71,7 +71,7 @@
       display: none;
     }
 
-    /* ✅ Neon-Effekt für aktiven Menüpunkt */
+    /* ✅ Neon-Lila für aktiven Menüpunkt */
     .nav-wrapper.active .nav-item {
       color: #ff00ff;
       text-shadow:
@@ -97,38 +97,37 @@
             <span>🏠</span><span class="text-sm font-medium">Home</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper">
+        <a href="https://o7-tobi.de/status" class="nav-wrapper">
           <div class="nav-item">
             <span>📄</span><span class="text-sm font-medium">Status</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper">
+        <a href="https://o7-tobi.de/support" class="nav-wrapper">
           <div class="nav-item">
             <span>🛠</span><span class="text-sm font-medium">Support</span>
           </div>
         </a>
-        <!-- ✅ Aktiver Menüpunkt hier -->
-        <a href="https://o7-tobi.de/dashboard" class="nav-wrapper active">
+        <a href="https://o7-tobi.de/dashboard" class="nav-wrapper">
           <div class="nav-item">
             <span>⚙️</span><span class="text-sm font-medium">Dashboard</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper">
+        <a href="https://o7-tobi.de/commands" class="nav-wrapper">
           <div class="nav-item">
             <span>📋</span><span class="text-sm font-medium">Commands</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper">
+        <a href="https://o7-tobi.de/profil" class="nav-wrapper">
           <div class="nav-item">
             <span>👤</span><span class="text-sm font-medium">Profil</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper">
+        <a href="https://o7-tobi.de/premium" class="nav-wrapper">
           <div class="nav-item">
             <span>⭐</span><span class="text-sm font-medium">Premium</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper">
+        <a href="https://o7-tobi.de/hilfe" class="nav-wrapper">
           <div class="nav-item">
             <span>❓</span><span class="text-sm font-medium">Hilfe</span>
           </div>
@@ -169,5 +168,15 @@
       </section>
     </main>
   </div>
+
+  <!-- ✅ Script: Markiert den aktiven Menüpunkt anhand der URL -->
+  <script>
+    const currentUrl = window.location.href;
+    document.querySelectorAll('.nav-wrapper').forEach(link => {
+      if (currentUrl.startsWith(link.href)) {
+        link.classList.add('active');
+      }
+    });
+  </script>
 </body>
 </html>
