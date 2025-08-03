@@ -31,15 +31,10 @@
       const card = document.createElement('div');
       card.className = 'bg-gray-800 border border-purple-700 rounded-2xl shadow-lg';
 
-      // Button zum Auf-/Zuklappen (zeigt nur Titel)
+      // Button zum Auf-/Zuklappen (zeigt nur Titel, ohne Pfeil)
       const header = document.createElement('button');
-      header.className = 'w-full flex items-center justify-between px-4 py-3 text-purple-400 font-semibold text-lg rounded-t-2xl focus:outline-none';
-      header.innerHTML = `
-        <span>Command ${i}</span>
-        <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-        </svg>
-      `;
+      header.className = 'w-full text-left px-4 py-3 text-purple-400 font-semibold text-lg rounded-t-2xl focus:outline-none';
+      header.textContent = `Command ${i}`;
 
       // Ausklappbarer Bereich (Beschreibung + Button)
       const content = document.createElement('div');
@@ -55,10 +50,8 @@
         const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
         if (isOpen) {
           content.style.maxHeight = '0px';
-          header.querySelector('svg').style.transform = 'rotate(0deg)';
         } else {
           content.style.maxHeight = content.scrollHeight + 'px';
-          header.querySelector('svg').style.transform = 'rotate(180deg)';
         }
       });
 
