@@ -272,7 +272,20 @@
     </div>
   </div>
 
+ <footer>
+    &copy; 2025 DeinBotName. Alle Rechte vorbehalten.
+  </footer>
 
+  <script>
+    // Accordion-Logik
+    const accordions = document.querySelectorAll('.accordion');
+
+    accordions.forEach(acc => {
+      acc.querySelector('.accordion-header').addEventListener('click', () => {
+        acc.classList.toggle('open');
+      });
+    });
+  </script>
   <!-- Script -->
   <script>
     function toggleAccordion(button) {
