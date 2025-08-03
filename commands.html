@@ -138,223 +138,66 @@
       </nav>
     </aside>
 
-    <!-- Main Content -->
-    <style>
-    body {
-      margin: 0;
-      background-color: #121212;
-      font-family: 'Segoe UI', sans-serif;
-      color: #e0e0e0;
-    }
-
-    header {
-      background-color: #2d0c45;
-      padding: 1.5rem;
-      text-align: center;
-      font-size: 1.8rem;
-      color: #fff;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
-
-    .accordion {
-      background-color: #1e1e2f;
-      border: 2px solid #9c27b0;
-      border-radius: 8px;
-      margin-bottom: 1rem;
+    /* Optional für smooth toggle Animation */
+    .content {
+      transition: max-height 0.3s ease;
       overflow: hidden;
-      box-shadow: 0 0 10px rgba(156, 39, 176, 0.2);
-    }
-
-    .accordion-header {
-      padding: 1rem;
-      cursor: pointer;
-      font-weight: bold;
-      color: #d580ff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background-color 0.3s;
-    }
-
-    .accordion-header:hover {
-      background-color: #2a2a3d;
-    }
-
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      padding: 0 1rem;
-      color: #c9b3d7;
-      background-color: #1a1a2a;
-      transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-    }
-
-    .accordion.open .accordion-content {
-      max-height: 200px;
-      padding: 1rem;
-    }
-
-    .arrow {
-      transition: transform 0.3s;
-    }
-
-    .accordion.open .arrow {
-      transform: rotate(90deg);
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 3rem;
-      color: #888;
-      font-size: 0.85rem;
     }
   </style>
 </head>
-<body>
-  <header>
-    📜 Befehlsübersicht (Lila Theme)
-  </header>
+<body class="bg-gray-900 text-white font-sans p-6">
 
-  <div class="container">
-    <div class="accordion">
-      <div class="accordion-header">
-        <span>/hilfe</span>
-        <span class="arrow">▶</span>
-      </div>
-      <div class="accordion-content">
-        Zeigt alle verfügbaren Befehle an.
-      </div>
-    </div>
+  <h1 class="text-3xl font-bold mb-6 text-purple-400">Commands Übersicht</h1>
 
-    <div class="accordion">
-      <div class="accordion-header">
-        <span>/ban &lt;user&gt;</span>
-        <span class="arrow">▶</span>
-      </div>
-      <div class="accordion-content">
-        Sperrt einen Benutzer dauerhaft vom Server.
-      </div>
-    </div>
-    
-    <div class="accordion">
-      <div class="accordion-header">
-        <span>/ban &lt;user&gt;</span>
-        <span class="arrow">▶</span>
-      </div>
-      <div class="accordion-content">
-        Sperrt einen Benutzer dauerhaft vom Server.
-      </div>
-    </div>
-    
-    <div class="accordion">
-      <div class="accordion-header">
-        <span>/ban &lt;user&gt;</span>
-        <span class="arrow">▶</span>
-      </div>
-      <div class="accordion-content">
-        Sperrt einen Benutzer dauerhaft vom Server.
-      </div>
-    </div>
-    
-    <div class="accordion">
-      <div class="accordion-header">
-        <span>/ban &lt;user&gt;</span>
-        <span class="arrow">▶</span>
-      </div>
-      <div class="accordion-content">
-        Sperrt einen Benutzer dauerhaft vom Server.
-      </div>
-    </div>
-    
-    <div class="accordion">
-      <div class="accordion-header">
-        <span>/ban &lt;user&gt;</span>
-        <span class="arrow">▶</span>
-      </div>
-      <div class="accordion-content">
-        Sperrt einen Benutzer dauerhaft vom Server.
-      </div>
-    </div>
+  <!-- Scrollbarer Container -->
+  <div class="max-h-[600px] overflow-y-auto space-y-4">
 
-    <div class="accordion">
-      <div class="accordion-header">
-        <span>/kick &lt;user&gt;</span>
-        <span class="arrow">▶</span>
-      </div>
-      <div class="accordion-content">
-        Entfernt einen Benutzer sofort vom Server.
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-header">
-        <span>/ping</span>
-        <span class="arrow">▶</span>
-      </div>
-      <div class="accordion-content">
-        Zeigt die aktuelle Bot-Latenz an.
-      </div>
-    </div>
-
-    <div class="accordion">
-      <div class="accordion-header">
-        <span>/info</span>
-        <span class="arrow">▶</span>
-      </div>
-      <div class="accordion-content">
-        Gibt allgemeine Informationen über den Bot oder den Server aus.
-      </div>
-    </div>
+    <!-- Einzelnes Akkordeon-Feld (20x davon) -->
+    <!-- Wir erzeugen 20 Felder mit JS weiter unten -->
   </div>
 
- 
-
   <script>
-    // Accordion-Logik
-    const accordions = document.querySelectorAll('.accordion');
+    const container = document.querySelector('div.max-h-[600px]');
 
-    accordions.forEach(acc => {
-      acc.querySelector('.accordion-header').addEventListener('click', () => {
-        acc.classList.toggle('open');
-      });
-    });
-  </script>
-  <!-- Script -->
-  <script>
-    function toggleAccordion(button) {
-      const content = button.nextElementSibling;
-      const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
-      const arrow = button.querySelector("span");
+    for(let i=1; i<=20; i++) {
+      // Create card container
+      const card = document.createElement('div');
+      card.className = 'bg-gray-800 border border-purple-700 rounded-2xl shadow-lg';
 
-      document.querySelectorAll('.accordion-content').forEach(el => {
-        el.style.maxHeight = null;
-      });
-      document.querySelectorAll('button span').forEach(sp => {
-        sp.style.transform = "rotate(0deg)";
-      });
+      // Create header (clickable)
+      const header = document.createElement('button');
+      header.className = 'w-full flex items-center justify-between px-4 py-3 text-purple-400 font-semibold text-lg rounded-t-2xl focus:outline-none';
+      header.innerHTML = `
+        <span>Command ${i}</span>
+        <div class="flex items-center gap-4">
+          <span class="text-gray-300 text-sm">Kurzbeschreibung vom Command ${i}</span>
+          <button class="text-purple-400 hover:text-purple-300 text-xl" aria-label="Einstellungen">⚙️</button>
+          <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+        </div>
+      `;
 
-      if (!isOpen) {
-        content.style.maxHeight = content.scrollHeight + "px";
-        arrow.style.transform = "rotate(90deg)";
-      }
-    }
+      // Create content div (hidden initially)
+      const content = document.createElement('div');
+      content.className = 'content max-h-0 px-4 pb-4 text-gray-300 text-sm';
+      content.textContent = `Hier steht die ausführliche Beschreibung von Command ${i}. Du kannst beliebig viele Details, Optionen oder Beispiele hier einfügen.`;
 
-    document.querySelectorAll("button + div").forEach(div => {
-      div.classList.add("accordion-content");
-    });
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const currentUrl = window.location.href;
-      document.querySelectorAll('.nav-wrapper').forEach(link => {
-        if (currentUrl.startsWith(link.href)) {
-          link.classList.add('active');
+      // Toggle content on header click
+      header.addEventListener('click', () => {
+        const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+        if (isOpen) {
+          content.style.maxHeight = '0px';
+          header.querySelector('svg').style.transform = 'rotate(0deg)';
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          header.querySelector('svg').style.transform = 'rotate(180deg)';
         }
       });
+
+      card.appendChild(header);
+      card.appendChild(content);
+      container.appendChild(card);
+    }
+  </script>
     });
   </script>
 </body>
