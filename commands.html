@@ -1,65 +1,110 @@
 <!DOCTYPE html>
-<html lang="de" >
+<html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Commands Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>o7_bot</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    .content {
-      transition: max-height 0.3s ease;
-      overflow: hidden;
+    :root {
+      --primary: #9b5de5;
+      --primary-hover: #7b3dd4;
+    }
+
+    .rounded-box {
+      border-radius: 1rem;
+    }
+
+    .nav-item {
+      transition: transform 0.4s ease, text-shadow 0.4s ease;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: white;
+    }
+
+    .nav-wrapper:hover .nav-item {
+      transform: translateX(14px);
+      text-shadow: 0 0 8px rgba(155, 93, 229, 0.6);
+    }
+
+    .sidebar-collapsed span.text-sm {
+      display: none;
+    }
+
+    .sidebar-collapsed .nav-item {
+      justify-content: center;
+    }
+
+    #sidebar {
+      width: 4rem;
+    }
+
+    #sidebar:hover {
+      width: 16rem;
+    }
+
+    #sidebar.sidebar-collapsed:hover span.text-sm {
+      display: inline;
+    }
+
+    #sidebar.sidebar-collapsed:hover .nav-item {
+      justify-content: flex-start;
+    }
+
+    .nav-wrapper.active .nav-item {
+      color: #ff00ff !important;
+      text-shadow:
+        0 0 5px #ff00ff,
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff,
+        0 0 40px rgba(255, 0, 255, 0.8);
     }
   </style>
 </head>
-<body class="bg-gray-900 text-white font-sans p-6">
+<body class="bg-gray-900 text-white font-sans relative overflow-hidden">
 
-  <h1 class="text-3xl font-bold mb-6 text-purple-400">Commands Übersicht</h1>
+  <div class="flex min-h-screen">
 
-  <div class="max-h-[600px] overflow-y-auto space-y-4">
-
-    <!-- Container für alle Commands -->
-    <div id="commands-container"></div>
-
-  </div>
-
-  <script>
-    const container = document.getElementById('commands-container');
-
-    for(let i=1; i<=20; i++) {
-      // Hauptcontainer pro Command
-      const card = document.createElement('div');
-      card.className = 'bg-gray-800 border border-purple-700 rounded-2xl shadow-lg';
-
-      // Button zum Auf-/Zuklappen (zeigt nur Titel, ohne Pfeil)
-      const header = document.createElement('button');
-      header.className = 'w-full text-left px-4 py-3 text-purple-400 font-semibold text-lg rounded-t-2xl focus:outline-none';
-      header.textContent = `Command ${i}`;
-
-      // Ausklappbarer Bereich (Beschreibung + Button)
-      const content = document.createElement('div');
-      content.className = 'content max-h-0 px-4 pb-4 text-gray-300 text-sm flex justify-between items-center';
-
-      content.innerHTML = `
-        <p>Hier steht die ausführliche Beschreibung von Command ${i}. Du kannst beliebig viele Details, Optionen oder Beispiele hier einfügen.</p>
-        <button class="text-purple-400 hover:text-purple-300 text-xl ml-4" aria-label="Einstellungen">⚙️</button>
-      `;
-
-      // Toggle Funktion
-      header.addEventListener('click', () => {
-        const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
-        if (isOpen) {
-          content.style.maxHeight = '0px';
-        } else {
-          content.style.maxHeight = content.scrollHeight + 'px';
-        }
-      });
-
-      card.appendChild(header);
-      card.appendChild(content);
-      container.appendChild(card);
-    }
-  </script>
-
-</body>
-</html>
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar-collapsed bg-gray-800 p-4 rounded-box transition-all duration-300 overflow-hidden">
+      <div class="flex items-center justify-center mb-6">
+        <img src="profile.png" width="50" height="50" class="rounded-full" alt="Logo" />
+      </div>
+      <nav class="flex flex-col space-y-1">
+        <a href="https://o7-tobi.de/" class="nav-wrapper" id="home-link">
+          <div class="nav-item">
+            <span>🏠</span><span class="text-sm font-medium">Home</span>
+          </div>
+        </a>
+        <a href="https://o7-tobi.de/dashboard" class="nav-wrapper" id="dashboard-link">
+          <div class="nav-item">
+            <span>⚙️</span><span class="text-sm font-medium">Dashboard</span>
+          </div>
+        </a>
+        <a href="https://o7-tobi.de/commands" class="nav-wrapper">
+          <div class="nav-item">
+            <span>📋</span><span class="text-sm font-medium">Commands</span>
+          </div>
+        </a>
+        <a href="https://o7-tobi.de/profil" class="nav-wrapper">
+          <div class="nav-item">
+            <span>👤</span><span class="text-sm font-medium">Profil</span>
+          </div>
+        </a>
+        <a href="https://o7-tobi.de/premium" class="nav-wrapper">
+          <div class="nav-item">
+            <span>⭐</span><span class="text-sm font-medium">Premium</span>
+          </div>
+        </a>
+        <a href="https://discord.gg/dfrvxTvyct" class="nav-wrapper">
+          <div class="nav-item">
+            <span>❓</span><span class="text-sm font-medium">Hilfe</span>
+          </div>
+        </a>
+      </nav>
+    </aside>
