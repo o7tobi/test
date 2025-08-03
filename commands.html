@@ -1,143 +1,11 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" >
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>o7_bot</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Commands Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root {
-      --primary: #9b5de5;
-      --primary-hover: #7b3dd4;
-      --bg-light: #f9fafb;
-      --text-light: #111827;
-    }
-
-    body {
-      transition: background-color 0.8s ease, color 0.3s ease;
-    }
-
-    body.light-mode {
-      background-color: var(--bg-light);
-      color: var(--text-light);
-    }
-
-    .rounded-box {
-      border-radius: 1rem;
-    }
-
-    .nav-item {
-      transition: transform 0.8s ease, text-shadow 0.4s ease;
-      padding: 0.75rem 1rem;
-      border-radius: 0.5rem;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .nav-wrapper:hover .nav-item {
-      transform: translateX(14px);
-      text-shadow: 0 0 8px rgba(155, 93, 229, 0.6);
-    }
-
-    .nav-wrapper {
-      display: block;
-      width: 100%;
-      padding: 4px;
-      border-radius: 0.75rem;
-      transition: background 0.3s ease;
-    }
-
-    .sidebar-collapsed span.text-sm {
-      display: none;
-    }
-
-    .sidebar-collapsed .nav-item {
-      justify-content: center;
-    }
-
-    #sidebar {
-      width: 4rem;
-      background-color: #2d3748;
-      transition: width 0.3s ease, opacity 0.5s ease, transform 0.3s ease;
-      opacity: 0.6;
-      transform: translateX(-10px);
-      overflow: hidden;
-    }
-
-    #sidebar:hover {
-      width: 16rem;
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    #sidebar.sidebar-collapsed:hover span.text-sm {
-      display: inline;
-    }
-
-    #sidebar.sidebar-collapsed:hover .nav-item {
-      justify-content: flex-start;
-    }
-
-    .nav-wrapper.active .nav-item {
-      color: #ff00ff;
-      text-shadow:
-        0 0 5px #ff00ff,
-        0 0 10px #ff00ff,
-        0 0 20px #ff00ff,
-        0 0 30px rgba(255, 0, 255, 0.5);
-    }
-
-    #theme-toggle:hover {
-      background-color: rgba(155, 93, 229, 0.2);
-    }
-  </style>
-</head>
-<body class="bg-gray-900 text-white font-sans relative overflow-hidden">
-
-  <div class="flex min-h-screen">
-
-    <!-- Sidebar -->
-    <aside id="sidebar" class="sidebar-collapsed p-4 rounded-box transition-all duration-300 overflow-hidden">
-      <div class="flex items-center justify-center mb-6">
-        <img src="profile.png" width="50" height="50" class="rounded-full" alt="Logo" />
-      </div>
-      <nav class="flex flex-col space-y-1">
-        <a href="https://o7-tobi.de/" class="nav-wrapper">
-          <div class="nav-item">
-            <span>🏠</span><span class="text-sm font-medium">Home</span>
-          </div>
-        </a>
-        <a href="https://o7-tobi.de/dashboard" class="nav-wrapper">
-          <div class="nav-item">
-            <span>⚙️</span><span class="text-sm font-medium">Dashboard</span>
-          </div>
-        </a>
-        <a href="https://o7-tobi.de/commands" class="nav-wrapper">
-          <div class="nav-item">
-            <span>📋</span><span class="text-sm font-medium">Commands</span>
-          </div>
-        </a>
-        <a href="https://o7-tobi.de/profil" class="nav-wrapper">
-          <div class="nav-item">
-            <span>👤</span><span class="text-sm font-medium">Profil</span>
-          </div>
-        </a>
-        <a href="https://o7-tobi.de/premium" class="nav-wrapper">
-          <div class="nav-item">
-            <span>⭐</span><span class="text-sm font-medium">Premium</span>
-          </div>
-        </a>
-        <a href="https://discord.gg/dfrvxTvyct" class="nav-wrapper">
-          <div class="nav-item">
-            <span>❓</span><span class="text-sm font-medium">Hilfe</span>
-          </div>
-        </a>
-      </nav>
-    </aside>
-
     /* Optional für smooth toggle Animation */
     .content {
       transition: max-height 0.3s ease;
@@ -198,7 +66,6 @@
       container.appendChild(card);
     }
   </script>
-    });
-  </script>
+
 </body>
 </html>
