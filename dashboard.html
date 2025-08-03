@@ -24,6 +24,7 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
+      color: white;
     }
 
     .nav-wrapper:hover .nav-item {
@@ -54,6 +55,16 @@
     #sidebar.sidebar-collapsed:hover .nav-item {
       justify-content: flex-start;
     }
+
+    /* ✅ Neon-Lila für aktiven Menüpunkt */
+    .nav-wrapper.active .nav-item {
+      color: #ff00ff !important;
+      text-shadow:
+        0 0 5px #ff00ff,
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff,
+        0 0 40px rgba(255, 0, 255, 0.8);
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white font-sans relative overflow-hidden">
@@ -71,12 +82,12 @@
             <span>🏠</span><span class="text-sm font-medium">Home</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper">
+        <a href="https://o7-tobi.de/status" class="nav-wrapper">
           <div class="nav-item">
             <span>📄</span><span class="text-sm font-medium">Status</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper">
+        <a href="https://o7-tobi.de/support" class="nav-wrapper">
           <div class="nav-item">
             <span>🛠</span><span class="text-sm font-medium">Support</span>
           </div>
@@ -86,22 +97,22 @@
             <span>⚙️</span><span class="text-sm font-medium">Dashboard</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper">
+        <a href="https://o7-tobi.de/commands" class="nav-wrapper">
           <div class="nav-item">
             <span>📋</span><span class="text-sm font-medium">Commands</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper">
+        <a href="https://o7-tobi.de/profil" class="nav-wrapper">
           <div class="nav-item">
             <span>👤</span><span class="text-sm font-medium">Profil</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper">
+        <a href="https://o7-tobi.de/premium" class="nav-wrapper">
           <div class="nav-item">
             <span>⭐</span><span class="text-sm font-medium">Premium</span>
           </div>
         </a>
-        <a href="#" class="nav-wrapper">
+        <a href="https://o7-tobi.de/hilfe" class="nav-wrapper">
           <div class="nav-item">
             <span>❓</span><span class="text-sm font-medium">Hilfe</span>
           </div>
@@ -163,5 +174,16 @@
       </footer>
     </main>
   </div>
+
+  <!-- ✅ Script zum Aktivieren des passenden Menüpunkts -->
+  <script>
+    const currentUrl = window.location.href;
+    document.querySelectorAll('.nav-wrapper').forEach(link => {
+      if (currentUrl.startsWith(link.href)) {
+        link.classList.add('active');
+      }
+    });
+  </script>
 </body>
 </html>
+
