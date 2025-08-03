@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Commands</title>
+  <title>Commands Accordion</title>
   <style>
     body {
       background-color: #1e1f22;
@@ -11,70 +11,74 @@
       font-family: Arial, sans-serif;
       padding: 20px;
     }
-    h2 {
-      margin-top: 40px;
-    }
-    .section {
-      margin-bottom: 30px;
-    }
-    .section-title {
-      font-size: 1.2em;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    .section-description {
-      font-size: 0.9em;
-      color: #bbbbbb;
-      margin-bottom: 10px;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      background: #2b2d31;
-      margin: 5px 0;
-      padding: 10px;
+
+    .accordion-item {
+      background-color: #2b2d31;
+      margin: 8px 0;
       border-radius: 5px;
     }
-    .star {
-      color: orange;
-      margin-right: 5px;
+
+    .accordion-header {
+      padding: 12px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 10px 15px;
+      border-top: 1px solid #3a3b3f;
+      color: #bbbbbb;
+    }
+
+    .command {
+      background-color: #3a3b3f;
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-family: monospace;
+      margin-top: 5px;
+    }
+
+    .accordion-item.active .accordion-content {
+      display: block;
     }
   </style>
 </head>
 <body>
 
   <div class="section">
-    <div class="section-title">Leveling Commands</div>
-    <div class="section-description">Everything that has to do with levels and experience</div>
-    <ul>
-      <li>Profile</li>
-      <li>Rank</li>
-      <li>Leaderboard</li>
-      <li><span class="star">★</span>Time</li>
-      <li>Edit</li>
-      <li>Reputation</li>
-    </ul>
+    <h2>Leveling Commands</h2>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Profile</div>
+      <div class="accordion-content">
+        Shows your server profile.<br>
+        <div class="command">/profile @user</div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">Rank</div>
+      <div class="accordion-content">
+        Displays your current rank and XP.<br>
+        <div class="command">/rank</div>
+      </div>
+    </div>
+
+    <!-- Weitere Befehle können nach diesem Muster hinzugefügt werden -->
+
   </div>
 
-  <div class="section">
-    <div class="section-title">Economy Commands</div>
-    <div class="section-description">Commands used for credits, gambling, and other fun games</div>
-    <ul>
-      <li>Daily</li>
-      <li>Streak</li>
-      <li>Balance</li>
-      <li>Give</li>
-      <li>Buy</li>
-      <li>Allin</li>
-      <li>Blackjack</li>
-      <li>Coin</li>
-      <li>Cups</li>
-      <li><span class="star">★</span>Slots</li>
-      <li>Fish</li>
-    </ul>
-  </div>
+  <script>
+    const headers = document.querySelectorAll('.accordion-header');
+    headers.forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        item.classList.toggle('active');
+      });
+    });
+  </script>
 
 </body>
 </html>
