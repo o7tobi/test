@@ -6,7 +6,6 @@
   <title>Commands Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Für smooth toggle Animation */
     .content {
       transition: max-height 0.3s ease;
       overflow: hidden;
@@ -17,37 +16,41 @@
 
   <h1 class="text-3xl font-bold mb-6 text-purple-400">Commands Übersicht</h1>
 
-  <!-- Scrollbarer Container -->
-  <div id="commands-container" class="max-h-[600px] overflow-y-auto space-y-4">
-    <!-- JS fügt hier die Felder ein -->
+  <div class="max-h-[600px] overflow-y-auto space-y-4">
+
+    <!-- Container für alle Commands -->
+    <div id="commands-container"></div>
+
   </div>
 
   <script>
     const container = document.getElementById('commands-container');
 
     for(let i=1; i<=20; i++) {
-      // Karte erstellen
+      // Hauptcontainer pro Command
       const card = document.createElement('div');
       card.className = 'bg-gray-800 border border-purple-700 rounded-2xl shadow-lg';
 
-      // Header (klickbar)
+      // Button zum Auf-/Zuklappen (zeigt nur Titel)
       const header = document.createElement('button');
       header.className = 'w-full flex items-center justify-between px-4 py-3 text-purple-400 font-semibold text-lg rounded-t-2xl focus:outline-none';
       header.innerHTML = `
         <span>Command ${i}</span>
-        <div class="flex items-center gap-4">
-          <span class="text-gray-300 text-sm">Kurzbeschreibung vom Command ${i}</span>
-          <button class="text-purple-400 hover:text-purple-300 text-xl" aria-label="Einstellungen">⚙️</button>
-          <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
-        </div>
+        <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+        </svg>
       `;
 
-      // Inhalt (versteckt)
+      // Ausklappbarer Bereich (Beschreibung + Button)
       const content = document.createElement('div');
-      content.className = 'content max-h-0 px-4 pb-4 text-gray-300 text-sm';
-      content.textContent = `Hier steht die ausführliche Beschreibung von Command ${i}. Du kannst beliebig viele Details, Optionen oder Beispiele hier einfügen.`;
+      content.className = 'content max-h-0 px-4 pb-4 text-gray-300 text-sm flex justify-between items-center';
 
-      // Toggle-Logik
+      content.innerHTML = `
+        <p>Hier steht die ausführliche Beschreibung von Command ${i}. Du kannst beliebig viele Details, Optionen oder Beispiele hier einfügen.</p>
+        <button class="text-purple-400 hover:text-purple-300 text-xl ml-4" aria-label="Einstellungen">⚙️</button>
+      `;
+
+      // Toggle Funktion
       header.addEventListener('click', () => {
         const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
         if (isOpen) {
