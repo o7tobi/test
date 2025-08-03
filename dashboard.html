@@ -56,14 +56,15 @@
       justify-content: flex-start;
     }
 
+    /* Neon-Effekt nur wenn aktiv */
     .nav-wrapper.active .nav-item {
-      color: #ff00ff !important;
+      color: #ff00ff;
       border: 2px solid #ff00ff;
       text-shadow:
         0 0 5px #ff00ff,
         0 0 10px #ff00ff,
         0 0 20px #ff00ff,
-        0 0 40px rgba(255, 0, 255, 0.8);
+        0 0 30px rgba(255, 0, 255, 0.6);
       box-shadow:
         0 0 10px #ff00ff,
         0 0 20px #ff00ff,
@@ -81,27 +82,27 @@
         <img src="profile.png" width="50" height="50" class="rounded-full" alt="Logo" />
       </div>
       <nav class="flex flex-col space-y-1">
-        <a href="https://o7-tobi.de/" class="nav-wrapper" id="home-link">
+        <a href="https://o7-tobi.de/" class="nav-wrapper">
           <div class="nav-item">
             <span>🏠</span><span class="text-sm font-medium">Home</span>
           </div>
         </a>
-        <a href="https://o7-tobi.de/dashboard" class="nav-wrapper" id="dashboard-link">
+        <a href="https://o7-tobi.de/dashboard" class="nav-wrapper">
           <div class="nav-item">
             <span>⚙️</span><span class="text-sm font-medium">Dashboard</span>
           </div>
         </a>
-        <a href="https://o7-tobi.de/commands" class="nav-wrapper" id="commands-link">
+        <a href="https://o7-tobi.de/commands" class="nav-wrapper">
           <div class="nav-item">
             <span>📋</span><span class="text-sm font-medium">Commands</span>
           </div>
         </a>
-        <a href="https://o7-tobi.de/profil" class="nav-wrapper" id="profil-link">
+        <a href="https://o7-tobi.de/profil" class="nav-wrapper">
           <div class="nav-item">
             <span>👤</span><span class="text-sm font-medium">Profil</span>
           </div>
         </a>
-        <a href="https://o7-tobi.de/premium" class="nav-wrapper" id="premium-link">
+        <a href="https://o7-tobi.de/premium" class="nav-wrapper">
           <div class="nav-item">
             <span>⭐</span><span class="text-sm font-medium">Premium</span>
           </div>
@@ -116,6 +117,7 @@
 
     <!-- Hauptbereich -->
     <main class="flex-1 p-6 overflow-y-auto">
+      <!-- Kopfzeile -->
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-3xl font-bold text-purple-400">Willkommen zurück</h2>
         <div class="flex items-center gap-4">
@@ -126,7 +128,7 @@
 
       <!-- Statistik-Karten -->
       <div class="flex flex-col gap-4 w-full mt-6">
-        <!-- Beispielkarten -->
+
         <div class="bg-gray-800 border border-purple-700 rounded-2xl shadow-lg h-20 w-full flex items-center justify-between px-4">
           <div class="flex flex-col justify-center">
             <h3 class="text-lg font-semibold text-purple-400">Statistik A</h3>
@@ -134,28 +136,36 @@
           </div>
           <button class="text-purple-400 hover:text-purple-300 text-xl">⚙️</button>
         </div>
-        <!-- Dupliziere weitere Karten hier bei Bedarf -->
+
+        <div class="bg-gray-800 border border-purple-700 rounded-2xl shadow-lg h-20 w-full flex items-center justify-between px-4">
+          <div class="flex flex-col justify-center">
+            <h3 class="text-lg font-semibold text-purple-400">Statistik B</h3>
+            <p class="text-gray-300 text-sm">Beispielinhalt für Statistik B.</p>
+          </div>
+          <button class="text-purple-400 hover:text-purple-300 text-xl">⚙️</button>
+        </div>
+
+        <div class="bg-gray-800 border border-purple-700 rounded-2xl shadow-lg h-20 w-full flex items-center justify-between px-4">
+          <div class="flex flex-col justify-center">
+            <h3 class="text-lg font-semibold text-purple-400">Statistik C</h3>
+            <p class="text-gray-300 text-sm">Beispielinhalt für Statistik C.</p>
+          </div>
+          <button class="text-purple-400 hover:text-purple-300 text-xl">⚙️</button>
+        </div>
+
       </div>
     </main>
   </div>
 
-  <!-- JS zur Aktivierung des aktuellen Links -->
+  <!-- JS: Aktiver Menüpunkt -->
   <script>
-    const path = window.location.pathname;
-    const links = {
-      "/": "home-link",
-      "/dashboard": "dashboard-link",
-      "/commands": "commands-link",
-      "/profil": "profil-link",
-      "/premium": "premium-link"
-    };
+    const currentPath = window.location.pathname;
 
-    for (const [key, id] of Object.entries(links)) {
-      if (path === key || window.location.href.includes(key)) {
-        document.getElementById(id).classList.add("active");
-        break;
+    document.querySelectorAll('.nav-wrapper').forEach(link => {
+      if (link.href.includes("/dashboard")) {
+        link.classList.add("active");
       }
-    }
+    });
   </script>
 </body>
 </html>
