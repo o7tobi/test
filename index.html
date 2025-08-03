@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
@@ -69,6 +70,16 @@
     #sidebar button {
       display: none;
     }
+
+    /* ✅ Neon-Effekt für aktiven Menüpunkt */
+    .nav-wrapper.active .nav-item {
+      color: #ff00ff;
+      text-shadow:
+        0 0 5px #ff00ff,
+        0 0 10px #ff00ff,
+        0 0 20px #ff00ff,
+        0 0 30px rgba(255, 0, 255, 0.5);
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white font-sans relative overflow-hidden">
@@ -96,7 +107,8 @@
             <span>🛠</span><span class="text-sm font-medium">Support</span>
           </div>
         </a>
-        <a href="https://o7-tobi.de/dashboard" class="nav-wrapper">
+        <!-- ✅ Aktiver Menüpunkt hier -->
+        <a href="https://o7-tobi.de/dashboard" class="nav-wrapper active">
           <div class="nav-item">
             <span>⚙️</span><span class="text-sm font-medium">Dashboard</span>
           </div>
