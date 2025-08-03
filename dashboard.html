@@ -76,12 +76,12 @@
         <img src="profile.png" width="50" height="50" class="rounded-full" alt="Logo" />
       </div>
       <nav class="flex flex-col space-y-1">
-        <a href="https://o7-tobi.de/" class="nav-wrapper active">
+        <a href="https://o7-tobi.de/" class="nav-wrapper" id="home-link">
           <div class="nav-item">
             <span>🏠</span><span class="text-sm font-medium">Home</span>
           </div>
         </a>
-        <a href="https://o7-tobi.de/dashboard" class="nav-wrapper">
+        <a href="https://o7-tobi.de/dashboard" class="nav-wrapper" id="dashboard-link">
           <div class="nav-item">
             <span>⚙️</span><span class="text-sm font-medium">Dashboard</span>
           </div>
@@ -111,7 +111,6 @@
 
     <!-- Hauptbereich -->
     <main class="flex-1 p-6 overflow-y-auto">
-      <!-- Kopfzeile -->
       <div class="flex justify-between items-center mb-6">
         <h2 class="text-3xl font-bold text-purple-400">Willkommen zurück</h2>
         <div class="flex items-center gap-4">
@@ -120,7 +119,6 @@
         </div>
       </div>
 
-      <!-- Karten -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="bg-gray-800 border border-purple-700 rounded-2xl p-5 shadow-lg">
           <h3 class="text-xl font-semibold mb-2 text-purple-400">Statistik A</h3>
@@ -138,5 +136,15 @@
     </main>
   </div>
 
+  <!-- JavaScript zum Aktivieren der Neon-Klasse beim Dashboard-Button -->
+  <script>
+    const dashboardLink = document.getElementById('dashboard-link');
+    dashboardLink.addEventListener('click', () => {
+      document.querySelectorAll('.nav-wrapper').forEach(el => {
+        el.classList.remove('active');
+      });
+      dashboardLink.classList.add('active');
+    });
+  </script>
 </body>
 </html>
