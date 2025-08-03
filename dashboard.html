@@ -136,15 +136,15 @@
     </main>
   </div>
 
-  <!-- JavaScript zum Aktivieren der Neon-Klasse beim Dashboard-Button -->
+  <!-- JS zur Aktivierung der aktuellen Seite -->
   <script>
-    const dashboardLink = document.getElementById('dashboard-link');
-    dashboardLink.addEventListener('click', () => {
-      document.querySelectorAll('.nav-wrapper').forEach(el => {
-        el.classList.remove('active');
-      });
-      dashboardLink.classList.add('active');
-    });
+    const currentPath = window.location.pathname;
+    const dashboardLink = document.getElementById("dashboard-link");
+
+    // Aktiviere nur den Dashboard-Link, wenn die URL auf /dashboard endet
+    if (currentPath === "/dashboard" || window.location.href.includes("/dashboard")) {
+      dashboardLink.classList.add("active");
+    }
   </script>
 </body>
 </html>
