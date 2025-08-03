@@ -21,7 +21,12 @@
       height: 100vh;
       background-color: var(--bg-color-dark);
       color: var(--text-color-dark);
-      transition: background 0.3s, color 0.3s;
+      transition: background-color 0.4s ease, color 0.4s ease, opacity 0.3s ease;
+      opacity: 1;
+    }
+
+    body.fade-out {
+      opacity: 0;
     }
 
     body.light {
@@ -72,12 +77,19 @@
     <button class="toggle-mode" onclick="toggleMode()">🌞 / 🌙</button>
   </div>
 
- 
+  <main>
+    <h1>Willkommen beim o7_bot Dashboard</h1>
+    <p>Hier kannst du zwischen Dark- und Light-Mode wechseln.</p>
+  </main>
 
   <script>
     function toggleMode() {
-      document.body.classList.toggle('light');
-      document.body.classList.toggle('dark');
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        document.body.classList.toggle('light');
+        document.body.classList.toggle('dark');
+        document.body.classList.remove('fade-out');
+      }, 300); // gleiche Dauer wie in CSS opacity transition
     }
   </script>
 </body>
