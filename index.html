@@ -10,6 +10,24 @@
     :root {
       --primary: #9b5de5;
       --primary-hover: #7b3dd4;
+      --bg-light: #f9fafb;
+      --text-light: #111827;
+    }
+
+    body {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Dunkelmodus (Standard) */
+    body {
+      background-color: #1a202c;
+      color: white;
+    }
+
+    /* Hellmodus */
+    body.light-mode {
+      background-color: var(--bg-light);
+      color: var(--text-light);
     }
 
     .rounded-box {
@@ -49,13 +67,11 @@
 
     #sidebar {
       width: 4rem;
+      background-color: #2d3748; /* Dunkel */
+      transition: background-color 0.3s ease;
     }
 
     #sidebar:hover {
-      width: 16rem;
-    }
-
-    #sidebar.sidebar-collapsed:hover {
       width: 16rem;
     }
 
@@ -67,8 +83,9 @@
       justify-content: flex-start;
     }
 
-    #sidebar button {
-      display: none;
+    /* Sidebar hell */
+    body.light-mode #sidebar {
+      background-color: #e5e7eb;
     }
 
     /* ✅ Neon-Lila für aktiven Menüpunkt */
@@ -80,6 +97,24 @@
         0 0 20px #ff00ff,
         0 0 30px rgba(255, 0, 255, 0.5);
     }
+
+    /* Hell/Dunkel Button Styles */
+    #theme-toggle {
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.25rem;
+      border-radius: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+    #theme-toggle:hover {
+      background-color: rgba(155, 93, 229, 0.2);
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white font-sans relative overflow-hidden">
@@ -87,7 +122,7 @@
   <div class="flex min-h-screen">
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="sidebar-collapsed bg-gray-800 p-4 rounded-box transition-all duration-300 overflow-hidden">
+    <aside id="sidebar" class="sidebar-collapsed p-4 rounded-box transition-all duration-300 overflow-hidden">
       <div class="flex items-center justify-center mb-6">
         <img src="profile.png" width="50" height="50" class="rounded-full" alt="Logo" />
       </div>
@@ -136,7 +171,14 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 p-10">
+    <main class="flex-1 p-10 relative">
+
+      <!-- Hell/Dunkel Button oben rechts -->
+      <button id="theme-toggle" aria-label="Toggle light/dark mode" title="Hell/Dunkel Modus wechseln" 
+              class="absolute top-4 right-4 z-50">
+        🌙
+      </button>
+
       <div class="flex justify-between items-center mb-10">
         <h1 class="text-3xl font-bold text-white">👋 Willkommen, o7_tobi</h1>
         <div class="flex items-center gap-3">
@@ -169,7 +211,7 @@
     </main>
   </div>
 
-  <!-- ✅ Script: Markiert den aktiven Menüpunkt anhand der URL -->
+  <!-- Script: Markiert den aktiven Menüpunkt anhand der URL -->
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       const currentUrl = window.location.href;
@@ -178,8 +220,27 @@
           link.classList.add('active');
         }
       });
+
+      // Theme Toggle Logik
+      const toggleButton = document.getElementById('theme-toggle');
+      const body = document.body;
+
+      // Initial Zustand aus localStorage laden
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        body.classList.add('light-mode');
+        toggleButton.textContent = '☀️';
+      } else {
+        toggleButton.textContent = '🌙';
+      }
+
+      toggleButton.addEventListener('click', () => {
+        body.classList.toggle('light-mode');
+        const isLight = body.classList.contains('light-mode');
+        toggleButton.textContent = isLight ? '☀️' : '🌙';
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      });
     });
   </script>
 </body>
 </html>
-
