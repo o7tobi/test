@@ -171,12 +171,15 @@
 
   <!-- ✅ Script: Markiert den aktiven Menüpunkt anhand der URL -->
   <script>
-    const currentUrl = window.location.href;
-    document.querySelectorAll('.nav-wrapper').forEach(link => {
-      if (currentUrl.startsWith(link.href)) {
-        link.classList.add('active');
-      }
+    window.addEventListener('DOMContentLoaded', () => {
+      const currentUrl = window.location.href;
+      document.querySelectorAll('.nav-wrapper').forEach(link => {
+        if (currentUrl.startsWith(link.href)) {
+          link.classList.add('active');
+        }
+      });
     });
   </script>
 </body>
 </html>
+
